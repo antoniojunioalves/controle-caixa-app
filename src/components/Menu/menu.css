@@ -1,0 +1,14 @@
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.menu-itens {
+  margin: 10px 20px 10px 20px;
+}
+
+.menu-itens > a {
+  text-decoration: none;
+}
