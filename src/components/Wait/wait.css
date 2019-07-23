@@ -9,7 +9,7 @@
   }
   
   .Wait-header {
-    background-color: #003300;
+    background: linear-gradient(to right, rgb(0, 0, 0), rgb(15, 155, 15));
     min-height: 100vh;
     display: flex;
     flex-direction: column;

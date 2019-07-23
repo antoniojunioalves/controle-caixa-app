@@ -1,14 +1,32 @@
 .menu {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: center;
   list-style-type: none;
+  background-color: red;
 }
 
-.menu-itens {
-  margin: 10px 20px 10px 20px;
-}
-
-.menu-itens > a {
+.texto-botao {
   text-decoration: none;
+}
+
+.botao{
+  text-align: center;
+  margin: 0px 5px 0px 5px;
+  font-family: 'Trebuchet MS';
+  /* box-shadow: 0px 1px 0px 0px #80ff80; */
+  overflow: hidden;
+  padding: 5px 30px 5px 30px;
+  font-size: 20px;
+  color: #006600;
+  border: 1px solid #009900;
+  text-decoration:none;
+  background: linear-gradient(to bottom, #80ff80 -50%, #00b300 100%) repeat scroll 0% 0% transparent;
+}
+
+.botao:hover{
+  color: #00cc00;
+  border: 1px solid #80ff80;
+  background: linear-gradient(to bottom, #00b300 -50%, #80ff80 100%) repeat scroll 0% 0% transparent;
 }
