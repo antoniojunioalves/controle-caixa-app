@@ -1,12 +1,13 @@
 import React from 'react';
+
 import wait from '../../imgs/MoneySplash.png';
 import './wait.css';
 
 export default () => (
-    <div className="Wait">
-        <header className="Wait-header"> 
+    <div className="wait">
+        <header className="wait-header"> 
             <img 
-                className="Wait-logo"
+                className="wait-logo"
                 src={wait}
                 alt="logo"/>
                 <p>Aguarde...</p>
