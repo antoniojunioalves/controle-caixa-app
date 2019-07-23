@@ -1,11 +1,13 @@
 import React from 'react'
 import { Router, Route, Redirect, hashHistory } from 'react-router'
 
-import Dashboard from '../components/Dashboard/dashboard.js'
+import Dashboard from '../components/Dashboard'
+import Wait from '../components/Wait'
 
 export default () => (
     <Router history={hashHistory}>
         <Route path='/dashboard' component={Dashboard} />
-        <Redirect from='*' to='/dashboard' />
+        <Route path='/wait' component={Wait}/>
+        <Redirect from='*' to='/wait' />
     </Router>
 )

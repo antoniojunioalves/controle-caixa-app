@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Wait from '../Wait/wait.js'
+import Wait from '../Wait'
 
 export default () => (
     <Wait />
