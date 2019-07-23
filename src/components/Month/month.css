@@ -1,0 +1,41 @@
+.mes-principal {
+    display: grid;
+    overflow: hidden;
+    width: 400px; 
+    grid-template-rows: 1fr;
+    grid-template-columns: 200px repeat(2, 100px);
+}
+
+.mes-titulo {
+    display: grid; 
+    overflow: hidden;
+    grid-column: span 3;
+    background-color: blue;
+    justify-items: center;
+    grid-template-columns: 100%; 
+    grid-template-rows: 100%;     
+}
+
+.mes-sub-titulo{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    background-color: white;
+}
+  
+.linha-receita{
+    background-color: green;
+    border: 1;
+    border-style: groove;
+    /* border-radius: 20%; */
+}
+ 
+.linha-despesa{
+    background-color: red;
+    border: 1;
+    border-style: groove;
+}
+
+.linha-totalizador{
+    background-color: aquamarine
+}

@@ -1,7 +1,11 @@
 import React from 'react'
 
-import Wait from '../Wait'
+import './dashboard.css'
+import Month from '../Month'
 
 export default () => (
-    <Wait />
+    <div className='dashboard-principal'>
+        <Month />
+      
+    </div>
 )
