@@ -1,8 +1,18 @@
 import React from 'react'
+// import CurrencyInput from 'react-currency-input';
+
+
 import './month.css'
 
 export default () => (
     <section className='mes-principal'>
+        {/* <CurrencyInput
+            className='linha-receita' 
+            decimalSeparator="," 
+            thousandSeparator="."
+            prefix="R$"
+            value={0}
+        ></CurrencyInput> */}        
         <div className='mes-titulo' >Junho</div>
 
         <div className='mes-sub-titulo'></div>
