@@ -1,25 +1,17 @@
 import React from 'react'
-// import CurrencyInput from 'react-currency-input';
-
 
 import './month.css'
 
 export default () => (
-    <section className='mes-principal'>
-        {/* <CurrencyInput
-            className='linha-receita' 
-            decimalSeparator="," 
-            thousandSeparator="."
-            prefix="R$"
-            value={0}
-        ></CurrencyInput> */}        
+    <section className='mes-principal'>        
         <div className='mes-titulo' >Junho</div>
 
         <div className='mes-sub-titulo'></div>
         <div className='mes-sub-titulo'>Pagar</div>
         <div className='mes-sub-titulo'>Receber</div>
 
-        {/* Separar para poder aumentar a quantidade */}
+        {/* Separar para poder aumentar a quantidade Fazer um loop futuramente para 
+            incrementar baseado na lista retornada pelo backend */}
         <div className='linha-receita'>Antônio</div>
         <div className='linha-receita'></div>
         <div className='linha-receita'>R$: 100,00</div>
@@ -36,7 +28,7 @@ export default () => (
         <div className='linha-despesa'>R$: 72,00</div>
         <div className='linha-despesa'></div>
         
-        {/* Fixar como última linha sempre */}
+        {/* TODO: Fixar como última linha sempre */}
         <div className='linha-totalizador'>Totalizador</div>
         <div className='linha-totalizador'>R$: 171,00</div>
         <div className='linha-totalizador'>R$: 200,00</div>        

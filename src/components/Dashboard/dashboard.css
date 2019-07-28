@@ -1,10 +1,4 @@
 .dashboard-principal {
-    /* display: grid;
-    justify-items: flex-start;
-    overflow: hidden;
-    background-color: blueviolet;
-    grid-template-columns: 500px 500px 500px; 
-    grid-template-columns: 500px 500px 500px; */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     grid-gap: 5px;
