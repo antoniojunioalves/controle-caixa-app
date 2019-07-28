@@ -1,4 +1,4 @@
-.mes-principal {
+.month-main {
     display: grid;
     overflow: hidden;
     width: 400px; 
@@ -6,7 +6,7 @@
     grid-template-columns: 200px repeat(2, 100px);
 }
 
-.mes-titulo {
+.month-title {
     display: grid; 
     overflow: hidden;
     grid-column: span 3;
@@ -16,26 +16,26 @@
     grid-template-rows: 100%;     
 }
 
-.mes-sub-titulo{
+.month-sub-title{
     display: flex;
     justify-content: center;
     overflow: hidden;
     background-color: white;
 }
   
-.linha-receita{
+.month-line-revenue{
     background-color: green;
     border: 1;
     border-style: groove;
     /* border-radius: 20%; */
 }
  
-.linha-despesa{
+.month-line-expense{
     background-color: red;
     border: 1;
     border-style: groove;
 }
 
-.linha-totalizador{
+.month-line-totalizer{
     background-color: aquamarine
 }

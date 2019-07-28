@@ -4,7 +4,7 @@ import './dashboard.css'
 import Month from '../Month'
 
 export default () => (
-    <div className='dashboard-principal'>
+    <div className='dashboard-main'>
         <Month />      
     </div>
 )

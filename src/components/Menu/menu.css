@@ -1,4 +1,4 @@
-.principal-menu {
+.menu-main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -12,11 +12,11 @@
   list-style-type: none;
 }
 
-.texto-botao {
+.menu-text-button {
   text-decoration: none;
 }
 
-.botao{
+.menu-button{
   text-align: center;
   margin: 0px 5px 0px 5px;
   font-family: 'Trebuchet MS';
@@ -29,14 +29,10 @@
   background: linear-gradient(to bottom, #80ff80 -50%, #00b300 100%) repeat scroll 0% 0% transparent;
 }
 
-.botao:hover{
+.menu-button:hover{
   color: #00cc00;
   border: 1px solid #80ff80;
   background: linear-gradient(to bottom, #00b300 -50%, #80ff80 100%) repeat scroll 0% 0% transparent;
-}
-
-.botao:hover > a {
-  color: #006600;
 }
 
 .img-logo {
