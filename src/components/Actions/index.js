@@ -10,8 +10,9 @@ const searchMonthsError = () => ({ type: 'SEARCH_MONTH_ERROR' })
 
 export const searchMonths = (currentMonth) => (dispatch) => {
   dispatch(searchMonthsRequest())
+  console.log(currentMonth)
 
-  fetch(`${urlAPI}/separadoMes?month=${currentMonth}`)
+  fetch(`${urlAPI}/separadoMes?month=6-7`)//${currentMonth}`)
     .then(response => {
       if (!response.ok)
         throw new Error()

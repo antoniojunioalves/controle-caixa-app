@@ -10,10 +10,12 @@ const rootReducers = (state = initialState, action) => {
         ...state,
         months: action.payload
       }
-    case 'SEARCH_MONTH_REQUEST', 'SEARCH_MONTH_ERROR':
+    case 'SEARCH_MONTH_REQUEST':
+    case 'SEARCH_MONTH_ERROR':
       return {
         ...state
       }
+    default: return state
   }
 }
 

@@ -6,29 +6,26 @@ import './dashboard.css'
 import Month from '../Month'
 
 const dashboard = props => {
-	const { searchMonths } = props
+  const { searchMonths, months } = props
 
-	const renderMonths = () => {
-		return (<Month />)
-		// return props.months.map(month => (
-		// 	<tr>
-		// 		<Month />
-		// 	</tr>
-		// ))
-	}
-	return (
-		<div className='dashboard-main'>
-			<button onClick={() => searchMonths(6)} />
-			{renderMonths()}
-		</div>
-	)
+  const renderMonths = () => {
+    return months.map(month => (
+      < Month month={month} />
+    ))
+  }
+
+  return (
+    <div className='dashboard-main'>
+      <button onClick={() => searchMonths(6)} />
+      {renderMonths()}
+    </div>
+  )
 }
 
-const mapStateToProps = state => ({})
-// const mapStateToProps = state => ({ months: state.months })
+const mapStateToProps = state => ({ months: state.months })
 
 const mapDispatchToProps = dispatch => ({
-	searchMonths: (month) => dispatch(searchMonths(month))
+  searchMonths: (month) => dispatch(searchMonths(month))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(dashboard)
