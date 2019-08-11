@@ -1,25 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { searchMonths } from '../Actions'
 import './dashboard.css'
 import Month from '../Month'
 
-const dashboard = props => {
-  const { searchMonths, months } = props
+class dashboard extends Component {
+  constructor(props) {
+    super(props)
+    this.renderMonths = this.renderMonths.bind(this)
+  }
 
-  const renderMonths = () => {
-    return months.map(month => (
-      < Month month={month} />
+  componentDidMount() {
+    this.props.searchMonths(6)
+  }
+
+  renderMonths() {
+    console.log(this.props.months)
+    return this.props.months.map(month => (
+      <Month key={month.mes} month={month} />
     ))
   }
 
-  return (
-    <div className='dashboard-main'>
-      <button onClick={() => searchMonths(6)} />
-      {renderMonths()}
-    </div>
-  )
+  render() {
+    return (
+      <div className='dashboard-main'>
+        {this.renderMonths()}
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = state => ({ months: state.months })

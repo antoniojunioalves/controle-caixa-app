@@ -3,13 +3,12 @@
     overflow: hidden;
     width: 400px; 
     grid-template-rows: 1fr;
-    grid-template-columns: 200px repeat(2, 100px);
+    grid-template-columns: 400px;
 }
 
 .month-title {
     display: grid; 
     overflow: hidden;
-    grid-column: span 3;
     background-color: blue;
     justify-items: center;
     grid-template-columns: 100%; 
@@ -25,17 +24,23 @@
   
 .month-line-revenue{
     background-color: green;
-    border: 1;
+    border: 1px;
     border-style: groove;
-    /* border-radius: 20%; */
 }
  
 .month-line-expense{
     background-color: red;
-    border: 1;
+    border: 1px;
     border-style: groove;
 }
 
 .month-line-totalizer{
     background-color: aquamarine
+}
+
+.month-div-line {
+    display: grid;
+    width: 400px; 
+    overflow: hidden;
+    grid-template-columns: 200px repeat(2, 100px);
 }

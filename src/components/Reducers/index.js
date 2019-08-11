@@ -5,7 +5,6 @@ const initialState = {
 const rootReducers = (state = initialState, action) => {
   switch (action.type) {
     case 'SEARCH_MONTH_SUCESS':
-      console.log(action.payload)
       return {
         ...state,
         months: action.payload
