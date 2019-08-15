@@ -1,35 +1,59 @@
 .month-main {
     display: grid;
     overflow: hidden;
-    width: 400px; 
-    grid-template-rows: 1fr;
-    grid-template-columns: 400px;
+    grid-template-rows: auto auto 1fr auto;
+    box-shadow: 0 2px 2px 0 rgb(0, 0, 0, 0.1);
+    border-radius: 4px;
+    /*
+
+    https://www.w3schools.com/cssref/tryit.asp?filename=trycss_grid-area_named4
+
+    grid-template-areas:
+    '1'
+    '2'
+    '3'
+    '4' */
 }
 
+.ultimo {
+    grid-area: 4;
+}
 .month-title {
-    display: grid; 
+    display: flex; 
     overflow: hidden;
-    background-color: blue;
-    justify-items: center;
-    grid-template-columns: 100%; 
-    grid-template-rows: 100%;     
+    background-color: #3333ff;
+    justify-content: center;
 }
 
-.month-sub-title{
+.month-pag-rec{
     display: flex;
     justify-content: center;
     overflow: hidden;
     background-color: white;
 }
+
+.month-line {
+    display: grid;
+    width: 400px; 
+    overflow: hidden;
+    align-items: start;
+    grid-template-columns: 200px repeat(2, 100px);
+}
+
+.meses {
+    display: grid;
+    overflow: hidden;
+    grid-column: 1/4;
+}
   
 .month-line-revenue{
-    background-color: green;
+    background-color: #9fdf9f;
     border: 1px;
     border-style: groove;
 }
- 
+
 .month-line-expense{
-    background-color: red;
+    background-color: #ff9999;
     border: 1px;
     border-style: groove;
 }
@@ -38,9 +62,8 @@
     background-color: aquamarine
 }
 
-.month-div-line {
-    display: grid;
-    width: 400px; 
-    overflow: hidden;
-    grid-template-columns: 200px repeat(2, 100px);
+.negativo {
+    color: red;
+    font-style: italic;
+    font-weight: bold;
 }

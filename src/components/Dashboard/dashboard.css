@@ -1,6 +1,5 @@
 .dashboard-main {
     display: grid;
-    grid-template-rows: 1fr;
     grid-template-columns: repeat(3, 400px);
-    grid-column-gap: 10px;
+    gap: 15px;
 }
