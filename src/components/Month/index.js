@@ -10,21 +10,20 @@ export default ({ month }) => {
       <div className='month-title' >{month.mes}</div>
 
       <div className="month-line">
-        {/* <button>Teste</button> */}
         <div className='month-pag-rec'></div>
         <div className='month-pag-rec'>Pagar</div>
         <div className='month-pag-rec'>Receber</div>
       </div>
 
-      <div className="meses">
+      <div>
         {month.parcelas.map(parcela => {
           const credito = parcela.tipoLancamento === 'C'
           const monthLine = credito ? 'month-line-revenue' : 'month-line-expense'
           return (
             <div key={parcela.descricao} className="month-line">
               <div className={monthLine}>{parcela.descricao}</div>
-              <div className={monthLine}>{!credito ? parcela.valor : 0}</div>
-              <div className={monthLine}>{credito ? parcela.valor : 0}</div>
+              <div className={monthLine}>{(!credito ? parcela.valor : 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' })}</div>
+              <div className={monthLine}>{(credito ? parcela.valor : 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' })}</div>
             </div>
           )
         })}

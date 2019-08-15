@@ -4,26 +4,21 @@
     grid-template-rows: auto auto 1fr auto;
     box-shadow: 0 2px 2px 0 rgb(0, 0, 0, 0.1);
     border-radius: 4px;
-    /*
-
-    https://www.w3schools.com/cssref/tryit.asp?filename=trycss_grid-area_named4
-
-    grid-template-areas:
-    '1'
-    '2'
-    '3'
-    '4' */
 }
 
-.ultimo {
-    grid-area: 4;
+.month-main:hover .month-title {
+  color: #FFF;
 }
+
 .month-title {
     display: flex; 
     overflow: hidden;
     background-color: #3333ff;
     justify-content: center;
 }
+/* .month-title:hover{
+    
+} */
 
 .month-pag-rec{
     display: flex;
@@ -34,16 +29,10 @@
 
 .month-line {
     display: grid;
-    width: 400px; 
+    /* width: 400px;  */
     overflow: hidden;
     align-items: start;
-    grid-template-columns: 200px repeat(2, 100px);
-}
-
-.meses {
-    display: grid;
-    overflow: hidden;
-    grid-column: 1/4;
+    grid-template-columns: 1fr repeat(2, 100px);
 }
   
 .month-line-revenue{
