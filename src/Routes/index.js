@@ -5,9 +5,9 @@ import Dashboard from '../components/Dashboard'
 import Wait from '../components/Wait'
 
 export default () => (
-    <Router history={hashHistory}>
-        <Route path='/dashboard' component={Dashboard} />
-        <Route path='/wait' component={Wait}/>
-        <Redirect from='*' to='/wait' />
-    </Router>
+  <Router history={hashHistory}>
+    <Route path='/dashboard' component={Dashboard} />
+    <Route path='/wait' component={Wait} />
+    <Redirect from='*' to='/wait' />
+  </Router>
 )

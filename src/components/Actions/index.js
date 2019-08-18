@@ -1,4 +1,4 @@
-const urlAPI = 'http://localhost:3003/api/titulos'
+const urlAPI = 'https://financeiro-bao.herokuapp.com/api/titulos'
 
 const searchMonthsRequest = () => ({ type: 'SEARCH_MONTH_REQUEST' })
 

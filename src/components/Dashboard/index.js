@@ -12,7 +12,9 @@ class dashboard extends Component {
   }
 
   componentDidMount() {
-    this.props.searchMonths(6)
+    let dataAtual = new Date();
+    // Sempre encaminha o mês atual ao abrir a tela
+    this.props.searchMonths(dataAtual.getMonth() + 1)
   }
 
   renderMonths() {
@@ -25,7 +27,12 @@ class dashboard extends Component {
   render() {
     return (
       <div className='dashboard-main'>
-        {this.renderMonths()}
+        <div className='dashboard-buttons'>
+          <button title='Incluir'>
+            Incluir
+          </button>
+        </div>
+        <div className='dashboard-months'>{this.renderMonths()}</div>
       </div>
     )
   }
