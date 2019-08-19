@@ -25,6 +25,7 @@
   font-size: 20px;
   color: #006600;
   border: 1px solid #009900;
+  border-radius: 5px;
   text-decoration:none;
   background: linear-gradient(to bottom, #80ff80 -50%, #00b300 100%) repeat scroll 0% 0% transparent;
 }

@@ -1,41 +1,55 @@
 .month-main {
     display: grid;
     overflow: hidden;
-    width: 400px; 
-    grid-template-rows: 1fr;
-    grid-template-columns: 200px repeat(2, 100px);
+    grid-template-rows: auto auto 1fr auto;
+    box-shadow: 0 2px 2px 0 rgb(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.month-main:hover .month-title {
+  color: #FFF;
 }
 
 .month-title {
-    display: grid; 
+    display: flex; 
     overflow: hidden;
-    grid-column: span 3;
-    background-color: blue;
-    justify-items: center;
-    grid-template-columns: 100%; 
-    grid-template-rows: 100%;     
+    background-color: #3333ff;
+    justify-content: center;
 }
 
-.month-sub-title{
+.month-pag-rec{
     display: flex;
     justify-content: center;
     overflow: hidden;
     background-color: white;
 }
+
+.month-line {
+    display: grid;
+    /* width: 400px;  */
+    overflow: hidden;
+    align-items: start;
+    grid-template-columns: 1fr repeat(2, 100px);
+}
   
 .month-line-revenue{
-    background-color: green;
-    border: 1;
+    background-color: #9fdf9f;
+    border: 1px;
     border-style: groove;
-    /* border-radius: 20%; */
 }
- 
+
 .month-line-expense{
-    background-color: red;
-    border: 1;
+    background-color: #ff9999;
+    border: 1px;
     border-style: groove;
 }
 
 .month-line-totalizer{
     background-color: aquamarine
+}
+
+.negativo {
+    color: red;
+    font-style: italic;
+    font-weight: bold;
 }

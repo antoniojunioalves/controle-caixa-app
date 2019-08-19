@@ -4,8 +4,8 @@ import Menu from '../Menu'
 import Routes from '../../Routes'
 
 export default () => (
-    <div>
-     	<Menu />
-      	<Routes />
-    </div>
+  <div>
+    <Menu />
+    <Routes />
+  </div>
 )
