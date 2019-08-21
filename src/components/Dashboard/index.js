@@ -20,7 +20,6 @@ class dashboard extends Component {
   }
 
   renderMonths() {
-    console.log(this.props.months)
     return this.props.months.map(month => (
       <Month key={month.mes} month={month} />
     ))

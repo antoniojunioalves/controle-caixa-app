@@ -2,12 +2,13 @@
   display: grid;
   grid-template-columns: 200px 200px;
   overflow: hidden;
-  /* background: red; */
+  background: red;
   border: 1px;
   border-style: solid;
   justify-items: stretch;
   gap: 5px;
   padding: 10px 10px 10px 10px;
+  width: 440px;
 } 
 .description {
   display: grid;
