@@ -20,7 +20,7 @@ export default ({ month }) => {
           const credito = parcela.tipoLancamento === 'C'
           const monthLine = credito ? 'month-line-revenue' : 'month-line-expense'
           return (
-            <div key={parcela.descricao} className="month-line">
+            <div key={parcela._id} className="month-line">
               <div className={monthLine}>{parcela.descricao}</div>
               <div className={monthLine}>{(!credito ? parcela.valor : 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' })}</div>
               <div className={monthLine}>{(credito ? parcela.valor : 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' })}</div>
@@ -31,12 +31,12 @@ export default ({ month }) => {
 
       <div className="month-line ultimo">
         <div className='month-line-totalizer'>Totalizador</div>
-        <div className='month-line-totalizer'>{month.totalDebito}</div>
-        <div className='month-line-totalizer'>{month.totalCredito}</div>
+        <div className='month-line-totalizer'>{month.totalDebito.toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' })}</div>
+        <div className='month-line-totalizer'>{month.totalCredito.toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' })}</div>
 
         <div className='month-line-totalizer'>-</div>
         <div className='month-line-totalizer'>Saldo</div>
-        <div className={saldo}>R$: {month.totalCredito - month.totalDebito}</div>
+        <div className={saldo}>{(month.totalCredito - month.totalDebito).toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' })}</div>
       </div>
     </section>
   )

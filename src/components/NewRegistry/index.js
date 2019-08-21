@@ -39,7 +39,7 @@ class NovoLancamento extends Component {
 
     let parcelas = []
 
-    // const { ano, mes, dia } = { ...primeiroVenc.split('-') }
+    // let [ano, mes, dia] = [...primeiroVenc.split('-')]
     const dataArray = { ...primeiroVenc.split('-') }
     let ano = parseInt(dataArray[0])
     let mes = parseInt(dataArray[1])
