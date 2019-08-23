@@ -19,3 +19,10 @@ export const searchMonths = (currentMonth) => (dispatch) => {
     .then(response => dispatch(searchMonthsSucess(response)))
     .catch(() => dispatch(searchMonthsError()))
 }
+
+export const updateShowNewRegistry = (showNewRegistry) => {
+  return {
+    type: 'SHOW_NEW_REGISTRY',
+    payload: showNewRegistry
+  }
+}

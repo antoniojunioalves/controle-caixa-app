@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
+import * as ActionsMonths from '../Actions'
 import { urlAPI } from '../Actions'
 import './NewRegistry.css'
 
@@ -10,15 +13,9 @@ const initialState = {
   primeiroVenc: '',
   pago: false,
   tipoLancamento: 'D'
-  // descricao: '',
-  // valorTotal: 0,
-  // qtdParcelas: 1,
-  // primeiroVenc: '',
-  // pago: false,
-  // tipoLancamento: 'D'
 }
 
-class NovoLancamento extends Component {
+class NewRegistry extends Component {
   state = { ...initialState }
 
   constructor(props) {
@@ -39,7 +36,6 @@ class NovoLancamento extends Component {
 
     let parcelas = []
 
-    // let [ano, mes, dia] = [...primeiroVenc.split('-')]
     const dataArray = { ...primeiroVenc.split('-') }
     let ano = parseInt(dataArray[0])
     let mes = parseInt(dataArray[1])
@@ -64,13 +60,6 @@ class NovoLancamento extends Component {
 
       parcelas.push(parcela)
     }
-
-    // const titulo = {
-    //   descricao,
-    //   tipoLancamento,
-    //   dataInsercao,
-    //   parcelas
-    // }
 
     console.log(JSON.stringify({
       descricao,
@@ -97,73 +86,82 @@ class NovoLancamento extends Component {
 
   render() {
     return (
-      <div className='newregistry-main' >
-        <div className='description'>
-          <label>Descrição: </label>
-          <input
-            type='text'
-            value={this.state.descricao}
-            onChange={(e) => { this.setState({ ...this.state, descricao: e.target.value }) }}
-          />
-        </div>
-        <div className='parcelas'>
-          <label>Valor: </label>
-          <input
-            type='text'
-            value={this.state.valorTotal}
-            onChange={(e) => { this.setState({ ...this.state, valorTotal: e.target.value }) }}
-          />
-        </div>
-        <div className='parcelas'>
-          <label>Parcelas: </label>
-          <input
-            type='text'
-            value={this.state.qtdParcelas}
-            onChange={(e) => { this.setState({ ...this.state, qtdParcelas: e.target.value }) }}
-          />
-        </div>
-        <div className='parcelas'>
-          <label>1º Vencimento</label>
-          <input
-            type='date'
-            value={this.state.primeiroVenc}
-            onChange={(e) => { this.setState({ ...this.state, primeiroVenc: e.target.value }) }}
-          />
-        </div>
-        <div className='pago'>
-          <input
-            type='checkbox'
-            value={this.state.pago}
-            onChange={(e) => { this.setState({ ...this.state, pago: e.target.value }) }}
-          />
-          <label>Pago</label>
-        </div>
-        <div>
-          <input
-            type='radio'
-            value='D'
-            name='TypeRegistry'
-            checked={this.state.tipoLancamento === 'D'}
-            onChange={(event) => { this.alterartipoLancamento(event.target.value) }}
-          />
-          <label>Débito</label>
-        </div>
-        <div>
-          <input
-            type='radio'
-            value='C'
-            name='TypeRegistry'
-            checked={this.state.tipoLancamento === 'C'}
-            onChange={(event) => { this.alterartipoLancamento(event.target.value) }}
-          />
-          <label>Crédito</label>
-        </div>
-        <div>
-          <button onClick={this.incluirNovoLancamento}> Salvar </button>
+      <div className='full-screen'>
+        <div className='newregistry-main' >
+          <div className='description'>
+            <label>Descrição: </label>
+            <input
+              type='text'
+              value={this.state.descricao}
+              onChange={(e) => { this.setState({ ...this.state, descricao: e.target.value }) }}
+            />
+          </div>
+          <div className='parcelas'>
+            <label>Valor: </label>
+            <input
+              type='text'
+              value={this.state.valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' })}
+              onChange={(e) => { this.setState({ ...this.state, valorTotal: e.target.value }) }}
+            />
+          </div>
+          <div className='parcelas'>
+            <label>Parcelas: </label>
+            <input
+              type='number'
+              value={this.state.qtdParcelas}
+              onChange={(e) => { this.setState({ ...this.state, qtdParcelas: e.target.value }) }}
+            />
+          </div>
+          <div className='parcelas'>
+            <label>1º Vencimento</label>
+            <input
+              type='date'
+              value={this.state.primeiroVenc}
+              onChange={(e) => { this.setState({ ...this.state, primeiroVenc: e.target.value }) }}
+            />
+          </div>
+          <div className='pago'>
+            <input
+              type='checkbox'
+              value={this.state.pago}
+              onChange={(e) => { this.setState({ ...this.state, pago: e.target.value }) }}
+            />
+            <label>Pago</label>
+          </div>
+          <div>
+            <input
+              type='radio'
+              value='D'
+              name='TypeRegistry'
+              checked={this.state.tipoLancamento === 'D'}
+              onChange={(event) => { this.alterartipoLancamento(event.target.value) }}
+            />
+            <label>Débito</label>
+          </div>
+          <div>
+            <input
+              type='radio'
+              value='C'
+              name='TypeRegistry'
+              checked={this.state.tipoLancamento === 'C'}
+              onChange={(event) => { this.alterartipoLancamento(event.target.value) }}
+            />
+            <label>Crédito</label>
+          </div>
+          <div>
+            <button onClick={this.incluirNovoLancamento}> Salvar </button>
+            <button onClick={() => { this.props.updateShowNewRegistry(false) }}> Fechar </button>
+          </div>
         </div>
       </div>
     )
   }
 }
 
-export default NovoLancamento
+const mapStateToProps = state => ({
+  showNewRegistry: state.showNewRegistry
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(ActionsMonths, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewRegistry)

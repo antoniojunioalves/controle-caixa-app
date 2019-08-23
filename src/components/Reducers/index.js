@@ -1,5 +1,6 @@
 const initialState = {
-  months: []
+  months: [],
+  showNewRegistry: false
 }
 
 const rootReducers = (state = initialState, action) => {
@@ -13,6 +14,11 @@ const rootReducers = (state = initialState, action) => {
     case 'SEARCH_MONTH_ERROR':
       return {
         ...state
+      }
+    case 'SHOW_NEW_REGISTRY':
+      return {
+        ...state,
+        showNewRegistry: action.payload
       }
     default: return state
   }
