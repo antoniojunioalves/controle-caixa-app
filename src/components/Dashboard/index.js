@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import { searchMonths } from '../Actions'
+import * as monthsActions from '../../actions'
+
 import './dashboard.css'
-import Month from '../Month'
+import Month from '../month'
+import NewRegistry from '../newRegistry'
 
 class dashboard extends Component {
+
   constructor(props) {
     super(props)
     this.renderMonths = this.renderMonths.bind(this)
@@ -18,7 +22,6 @@ class dashboard extends Component {
   }
 
   renderMonths() {
-    console.log(this.props.months)
     return this.props.months.map(month => (
       <Month key={month.mes} month={month} />
     ))
@@ -28,20 +31,25 @@ class dashboard extends Component {
     return (
       <div className='dashboard-main'>
         <div className='dashboard-buttons'>
-          <button title='Incluir'>
+          <button
+            title="Incluir"
+            onClick={() => { this.props.showRegistry(true) }}
+          >
             Incluir
           </button>
         </div>
         <div className='dashboard-months'>{this.renderMonths()}</div>
-      </div>
+        {this.props.showNewRegistry && <NewRegistry />}
+      </div >
     )
   }
 }
 
-const mapStateToProps = state => ({ months: state.months })
-
-const mapDispatchToProps = dispatch => ({
-  searchMonths: (month) => dispatch(searchMonths(month))
+const mapStateToProps = state => ({
+  months: state.months,
+  showNewRegistry: state.showNewRegistry
 })
+
+const mapDispatchToProps = dispatch => bindActionCreators(monthsActions, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(dashboard)

@@ -26,7 +26,6 @@
 
 .month-line {
     display: grid;
-    /* width: 400px;  */
     overflow: hidden;
     align-items: start;
     grid-template-columns: 1fr repeat(2, 100px);
@@ -34,14 +33,12 @@
   
 .month-line-revenue{
     background-color: #9fdf9f;
-    border: 1px;
-    border-style: groove;
+    border-bottom: 0.5px groove rgb(201, 195, 195);    
 }
 
 .month-line-expense{
     background-color: #ff9999;
-    border: 1px;
-    border-style: groove;
+    border-bottom: 0.5px groove rgb(201, 195, 195);
 }
 
 .month-line-totalizer{
