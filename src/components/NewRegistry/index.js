@@ -2,26 +2,24 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import * as ActionsMonths from '../Actions'
-import { urlAPI } from '../Actions'
+import * as ActionsMonths from '../../Actions'
 import './NewRegistry.css'
 
-const initialState = {
-  descricao: 'Antônio',
-  valorTotal: 500,
-  qtdParcelas: 10,
-  primeiroVenc: '',
-  pago: false,
-  tipoLancamento: 'D'
-}
-
 class NewRegistry extends Component {
-  state = { ...initialState }
+  state = {
+    descricao: '',
+    valorTotal: 0,
+    qtdParcelas: 1,
+    primeiroVenc: '',
+    pago: false,
+    tipoLancamento: 'D'
+  }
 
   constructor(props) {
     super(props)
     this.alterartipoLancamento = this.alterartipoLancamento.bind(this)
     this.incluirNovoLancamento = this.incluirNovoLancamento.bind(this)
+    this.convertValueCurr = this.convertValueCurr.bind(this)
   }
 
   alterartipoLancamento(tipoLancamento) {
@@ -30,81 +28,68 @@ class NewRegistry extends Component {
 
   incluirNovoLancamento() {
     const { descricao, valorTotal, tipoLancamento, qtdParcelas, primeiroVenc, pago } = this.state
-    console.log(primeiroVenc)
-
-    const dataInsercao = new Date();
 
     let parcelas = []
-
     const dataArray = { ...primeiroVenc.split('-') }
     let ano = parseInt(dataArray[0])
     let mes = parseInt(dataArray[1])
     // let dia = parseInt(dataArray[2])
 
-    for (let i = 1; i <= qtdParcelas; i++) {
-      mes += 1
+    for (let nroParcela = 1; nroParcela <= qtdParcelas; nroParcela++) {
       if (mes === 13) {
         ano = ano + 1
         mes = 1
       }
 
       const valor = valorTotal / qtdParcelas
-
-      const parcela = {
-        nroParcela: i,
-        mes,
-        ano,
-        valor,
-        pago
-      }
-
+      const parcela = { nroParcela, mes, ano, valor, pago }
       parcelas.push(parcela)
+
+      mes += 1
     }
 
-    console.log(JSON.stringify({
+    const dataInsercao = new Date();
+    this.props.insertNewRegistry({
       descricao,
       tipoLancamento,
       dataInsercao,
       parcelas
-    }))
-
-    fetch(urlAPI, {
-      headers: {
-        "Content-Type": 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        descricao,
-        tipoLancamento,
-        dataInsercao,
-        parcelas
-      })
     })
-      .then((response) => { console.log('Sucesso ', response) })
-      .catch((error) => { console.log('Error ', error) })
+  }
+
+  convertValueCurr(value) {
+    let valueCurrency = value ? value : 0
+    return valueCurrency.toLocaleString(
+      'pt-BR',
+      {
+        minimumFractionDigits: 2,
+        style: 'currency',
+        currency: 'BRL'
+      })
   }
 
   render() {
     return (
-      <div className='full-screen'>
-        <div className='newregistry-main' >
-          <div className='description'>
+      <div className='new-registry-full-screen'>
+        <div className='new-registry-main' >
+          <div className='new-registry-description'>
             <label>Descrição: </label>
             <input
               type='text'
+              placeholder='Informe uma descrição'
               value={this.state.descricao}
               onChange={(e) => { this.setState({ ...this.state, descricao: e.target.value }) }}
             />
           </div>
-          <div className='parcelas'>
+          <div className='new-registry-grid'>
             <label>Valor: </label>
             <input
               type='text'
-              value={this.state.valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' })}
+              value={this.convertValueCurr(this.state.valorTotal)}
               onChange={(e) => { this.setState({ ...this.state, valorTotal: e.target.value }) }}
             />
           </div>
-          <div className='parcelas'>
+          <div className='new-registry-grid'>
             <label>Parcelas: </label>
             <input
               type='number'
@@ -112,7 +97,7 @@ class NewRegistry extends Component {
               onChange={(e) => { this.setState({ ...this.state, qtdParcelas: e.target.value }) }}
             />
           </div>
-          <div className='parcelas'>
+          <div className='new-registry-grid'>
             <label>1º Vencimento</label>
             <input
               type='date'
@@ -120,7 +105,7 @@ class NewRegistry extends Component {
               onChange={(e) => { this.setState({ ...this.state, primeiroVenc: e.target.value }) }}
             />
           </div>
-          <div className='pago'>
+          <div className='new-registry-payed'>
             <input
               type='checkbox'
               value={this.state.pago}
@@ -148,10 +133,8 @@ class NewRegistry extends Component {
             />
             <label>Crédito</label>
           </div>
-          <div>
-            <button onClick={this.incluirNovoLancamento}> Salvar </button>
-            <button onClick={() => { this.props.updateShowNewRegistry(false) }}> Fechar </button>
-          </div>
+          <button className='new-registry-button-salvar' onClick={this.incluirNovoLancamento}> Salvar </button>
+          <button className='new-registry-button-fechar' onClick={() => { this.props.updateShowNewRegistry(false) }}> Fechar </button>
         </div>
       </div>
     )

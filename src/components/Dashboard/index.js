@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import * as ActionsMonths from '../Actions'
+import * as ActionsMonths from '../../Actions'
 
 import './dashboard.css'
 import Month from '../Month'
