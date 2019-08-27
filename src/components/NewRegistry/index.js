@@ -76,7 +76,7 @@ class NewRegistry extends Component {
             <label>Valor: </label>
             <input
               type='text'
-              value={this.formatCurrencyValue(this.state.valorTotal)}
+              value={formatCurrencyValue(this.state.valorTotal)}
               onChange={(e) => { this.setState({ ...this.state, valorTotal: e.target.value }) }}
             />
           </div>
