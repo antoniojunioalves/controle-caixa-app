@@ -34,7 +34,6 @@ class NewRegistry extends Component {
     const dataArray = primeiroVenc.split('-')
     let ano = parseInt(dataArray[0])
     let mes = parseInt(dataArray[1])
-    console.log('mes', mes)
     // let dia = parseInt(dataArray[2])
 
     for (let nroParcela = 1; nroParcela <= qtdParcelas; nroParcela++) {
