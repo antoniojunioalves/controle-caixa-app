@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import * as ActionsMonths from '../../Actions'
-import './NewRegistry.css'
+import { formatCurrencyValue } from '../../utils'
+import * as ActionsMonths from '../../actions'
+import './newRegistry.css'
 
 class NewRegistry extends Component {
   state = {
@@ -19,7 +20,6 @@ class NewRegistry extends Component {
     super(props)
     this.alterartipoLancamento = this.alterartipoLancamento.bind(this)
     this.incluirNovoLancamento = this.incluirNovoLancamento.bind(this)
-    this.convertValueCurr = this.convertValueCurr.bind(this)
   }
 
   alterartipoLancamento(tipoLancamento) {
@@ -30,9 +30,11 @@ class NewRegistry extends Component {
     const { descricao, valorTotal, tipoLancamento, qtdParcelas, primeiroVenc, pago } = this.state
 
     let parcelas = []
-    const dataArray = { ...primeiroVenc.split('-') }
+
+    const dataArray = primeiroVenc.split('-')
     let ano = parseInt(dataArray[0])
     let mes = parseInt(dataArray[1])
+    console.log('mes', mes)
     // let dia = parseInt(dataArray[2])
 
     for (let nroParcela = 1; nroParcela <= qtdParcelas; nroParcela++) {
@@ -49,23 +51,12 @@ class NewRegistry extends Component {
     }
 
     const dataInsercao = new Date();
-    this.props.insertNewRegistry({
+    this.props.addRegistry({
       descricao,
       tipoLancamento,
       dataInsercao,
       parcelas
     })
-  }
-
-  convertValueCurr(value) {
-    let valueCurrency = value ? value : 0
-    return valueCurrency.toLocaleString(
-      'pt-BR',
-      {
-        minimumFractionDigits: 2,
-        style: 'currency',
-        currency: 'BRL'
-      })
   }
 
   render() {
@@ -85,7 +76,7 @@ class NewRegistry extends Component {
             <label>Valor: </label>
             <input
               type='text'
-              value={this.convertValueCurr(this.state.valorTotal)}
+              value={this.formatCurrencyValue(this.state.valorTotal)}
               onChange={(e) => { this.setState({ ...this.state, valorTotal: e.target.value }) }}
             />
           </div>
@@ -133,8 +124,8 @@ class NewRegistry extends Component {
             />
             <label>Crédito</label>
           </div>
-          <button className='new-registry-button-salvar' onClick={this.incluirNovoLancamento}> Salvar </button>
-          <button className='new-registry-button-fechar' onClick={() => { this.props.updateShowNewRegistry(false) }}> Fechar </button>
+          <button className='new-registry-button new-registry-button-salvar' onClick={this.incluirNovoLancamento}> Salvar </button>
+          <button className='new-registry-button new-registry-button-fechar' onClick={() => { this.props.showRegistry(false) }}> Fechar </button>
         </div>
       </div>
     )

@@ -12,8 +12,8 @@ const rootReducers = (state = initialState, action) => {
       }
     case 'SEARCH_MONTH_REQUEST':
     case 'SEARCH_MONTH_ERROR':
-    case 'INSERT_NEW_REGISTRY_REQUEST':
-    case 'INSERT_NEW_REGISTRY_ERROR':
+    case 'ADD_REGISTRY_REQUEST':
+    case 'ADD_REGISTRY_ERROR':
       return {
         ...state
       }

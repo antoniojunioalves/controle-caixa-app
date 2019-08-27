@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import * as ActionsMonths from '../../Actions'
+import * as monthsActions from '../../actions'
 
 import './dashboard.css'
-import Month from '../Month'
-import NewRegistry from '../NewRegistry'
+import Month from '../month'
+import NewRegistry from '../newRegistry'
 
 class dashboard extends Component {
 
@@ -32,8 +32,8 @@ class dashboard extends Component {
       <div className='dashboard-main'>
         <div className='dashboard-buttons'>
           <button
-            title='Incluir'
-            onClick={() => { this.props.updateShowNewRegistry(true) }}
+            title="Incluir"
+            onClick={() => { this.props.showRegistry(true) }}
           >
             Incluir
           </button>
@@ -50,6 +50,6 @@ const mapStateToProps = state => ({
   showNewRegistry: state.showNewRegistry
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators(ActionsMonths, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators(monthsActions, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(dashboard)

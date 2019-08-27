@@ -1,8 +1,8 @@
 import React from 'react'
 import { Router, Route, Redirect, hashHistory } from 'react-router'
 
-import Dashboard from '../components/Dashboard'
-import Wait from '../components/Wait'
+import Dashboard from '../components/dashboard'
+import Wait from '../components/wait'
 
 export default () => (
   <Router history={hashHistory}>

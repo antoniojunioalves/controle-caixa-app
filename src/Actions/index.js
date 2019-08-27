@@ -5,7 +5,7 @@ const searchMonthsSucess = (months) => ({ type: 'SEARCH_MONTH_SUCESS', payload: 
 const searchMonthsError = () => ({ type: 'SEARCH_MONTH_ERROR' })
 export const searchMonths = (currentMonth) => (dispatch) => {
   dispatch(searchMonthsRequest())
-  console.log('entrou no search')
+
   fetch(`${urlAPI}/separadoMes?month=${currentMonth}`)
     .then(response => {
       if (!response.ok)
@@ -17,24 +17,24 @@ export const searchMonths = (currentMonth) => (dispatch) => {
     .catch(() => dispatch(searchMonthsError()))
 }
 
-export const updateShowNewRegistry = (showNewRegistry) => {
+export const showRegistry = (show) => {
   return {
     type: 'SHOW_NEW_REGISTRY',
-    payload: showNewRegistry
+    payload: show
   }
 }
 
-const insertNewRegistryRequest = () => ({ type: 'INSERT_NEW_REGISTRY_REQUEST' })
-const insertNewRegistryError = () => ({ type: 'INSERT_NEW_REGISTRY_ERROR' })
-export const insertNewRegistry = (newRegistro) => (dispatch) => {
-  dispatch(insertNewRegistryRequest())
+const addRegistryRequest = () => ({ type: 'ADD_REGISTRY_REQUEST' })
+const addRegistryError = () => ({ type: 'ADD_REGISTRY_ERROR' })
+export const addRegistry = (registry) => (dispatch) => {
+  dispatch(addRegistryRequest())
 
   fetch(urlAPI, {
     headers: {
       "Content-Type": 'application/json'
     },
     method: 'POST',
-    body: JSON.stringify(newRegistro)
+    body: JSON.stringify(registry)
   })
     .then(response => {
       if (!response.ok)
@@ -43,8 +43,8 @@ export const insertNewRegistry = (newRegistro) => (dispatch) => {
       // return response.json()
     })
     .then(() => {
-      dispatch(updateShowNewRegistry(false))
-      dispatch(searchMonths(newRegistro.dataInsercao.getMonth() + 1))
+      dispatch(showRegistry(false))
+      dispatch(searchMonths(registry.dataInsercao.getMonth() + 1))
     })
-    .catch((error) => { dispatch(insertNewRegistryError(error)) })
+    .catch((error) => { dispatch(addRegistryError(error)) })
 }
