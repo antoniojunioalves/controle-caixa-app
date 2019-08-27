@@ -25,7 +25,6 @@ export default ({ month }) => {
         <div className='month-pag-rec'></div>
         <div className='month-pag-rec'>Pagar</div>
         <div className='month-pag-rec'>Receber</div>
-        <div className='month-pag-rec'>Ações</div>
       </div>
 
       <div>
