@@ -28,7 +28,7 @@
     display: grid;
     overflow: hidden;
     align-items: start;
-    grid-template-columns: 1fr repeat(2, 95px) 45px;
+    grid-template-columns: 1fr repeat(2, 100px);
 }
   
 .month-line-revenue{

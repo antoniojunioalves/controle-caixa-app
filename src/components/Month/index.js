@@ -32,22 +32,12 @@ export default ({ month }) => {
         {month.parcelas.map(parcela => {
           const credito = parcela.tipoLancamento === 'C'
           const monthLine = credito ? 'month-line-revenue' : 'month-line-expense'
-          // PREENCHER O parcela._id no backend - para parar de acontecer o erro no console
+          // PREENCHER O parcela._id no backend - para parar de acontecer o erro no console de key
           return (
             <div key={parcela._id} className="month-line">
               <div className={monthLine}>{parcela.descricao}</div>
               <div className={monthLine}>{convertValueCurr(!credito ? parcela.valor : 0)}</div>
               <div className={monthLine}>{convertValueCurr(credito ? parcela.valor : 0)}</div>
-              <div>
-                <button
-                  onClick={() => { console.log('Excluir os registros') }}
-                >-
-                </button>
-                <button
-                  onClick={() => { console.log('Excluir os registros') }}
-                >?
-                </button>
-              </div>
             </div>
           )
         })}
