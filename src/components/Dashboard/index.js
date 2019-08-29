@@ -5,8 +5,8 @@ import { bindActionCreators } from 'redux'
 import * as monthsActions from '../../actions'
 
 import './dashboard.css'
-import Month from '../month'
-import NewRegistry from '../newRegistry'
+import Month from '../Month'
+import NewRegistry from '../NewRegistry'
 
 class dashboard extends Component {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Menu from '../menu'
-import Routes from '../../routes'
+import Menu from '../Menu'
+import Routes from '../../Routes'
 
 export default () => (
   <div>
