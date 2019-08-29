@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import { formatCurrencyValue } from '../../utils'
 import * as ActionsMonths from '../../actions'
-import './newRegistry.css'
+import './NewRegistry.css'
 
 class NewRegistry extends Component {
   state = {
