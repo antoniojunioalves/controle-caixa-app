@@ -14,6 +14,7 @@ export default ({ month }) => {
         <div className='month-pag-rec'></div>
         <div className='month-pag-rec'>Pagar</div>
         <div className='month-pag-rec'>Receber</div>
+        <div className='month-pag-rec'>Ações</div>
       </div>
 
       <div>
@@ -25,6 +26,14 @@ export default ({ month }) => {
               <div className={monthLine}>{parcela.descricao}</div>
               <div className={monthLine}>{formatCurrencyValue(!credito ? parcela.valor : 0)}</div>
               <div className={monthLine}>{formatCurrencyValue(credito ? parcela.valor : 0)}</div>
+              <div className='month-pag-rec'>
+                <button
+                  onClick={() => {
+                    console.log(parcela.descricao)
+                  }}
+                >E</button>
+                <button>X</button>
+              </div>
             </div>
           )
         })}
