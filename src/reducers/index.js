@@ -10,17 +10,19 @@ const rootReducers = (state = initialState, action) => {
         ...state,
         months: action.payload
       }
-    case 'SEARCH_MONTH_REQUEST':
-    case 'SEARCH_MONTH_ERROR':
-    case 'ADD_REGISTRY_REQUEST':
-    case 'ADD_REGISTRY_ERROR':
-      return {
-        ...state
-      }
     case 'SHOW_NEW_REGISTRY':
       return {
         ...state,
         showNewRegistry: action.payload
+      }
+    case 'SEARCH_MONTH_REQUEST':
+    case 'SEARCH_MONTH_ERROR':
+    case 'ADD_REGISTRY_REQUEST':
+    case 'ADD_REGISTRY_ERROR':
+    case 'REMOVE_TITULO_REQUEST':
+    case 'REMOVE_TITULO_ERROR':
+      return {
+        ...state
       }
     default: return state
   }

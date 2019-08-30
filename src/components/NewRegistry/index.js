@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { formatCurrencyValue } from '../../utils'
-import * as ActionsMonths from '../../actions'
+import * as monthsActions from '../../actions'
 import './NewRegistry.css'
 
 class NewRegistry extends Component {
@@ -133,8 +133,8 @@ class NewRegistry extends Component {
 
 const mapStateToProps = state => ({
   showNewRegistry: state.showNewRegistry
-});
+})
 
-const mapDispatchToProps = dispatch => bindActionCreators(ActionsMonths, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(monthsActions, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewRegistry)
