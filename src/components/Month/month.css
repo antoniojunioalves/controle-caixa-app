@@ -42,7 +42,9 @@
 }
 
 .month-line-totalizer{
-    background-color: aquamarine
+    background-color: aquamarine;
+    height: auto;
+    width: auto; 
 }
 
 .negativo {

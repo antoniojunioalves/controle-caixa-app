@@ -1,5 +1,5 @@
-// export const urlAPI = 'https://financeiro-bao.herokuapp.com/api/titulos'
-export const urlAPI = 'http://localhost:3003/api/titulos'
+export const urlAPI = 'https://financeiro-bao.herokuapp.com/api/titulos'
+// export const urlAPI = 'http://localhost:3003/api/titulos'
 
 
 const searchMonthsRequest = () => ({ type: 'SEARCH_MONTH_REQUEST' })
@@ -26,6 +26,13 @@ export const showRegistry = (show) => {
   }
 }
 
+export const showQuestion = (show) => {
+  return {
+    type: 'SHOW_QUESTION',
+    payload: show
+  }
+}
+
 const addRegistryRequest = () => ({ type: 'ADD_REGISTRY_REQUEST' })
 const addRegistryError = (error) => ({ type: 'ADD_REGISTRY_ERROR', payload: error })
 export const addRegistry = (registry) => (dispatch) => {
@@ -47,11 +54,6 @@ export const addRegistry = (registry) => (dispatch) => {
       dispatch(searchMonths(registry.dataInsercao.getMonth() + 1))
     })
     .catch((error) => { dispatch(addRegistryError(error)) })
-}
-
-
-export const removeParcela = (parcela_id) => (dispatch) => {
-
 }
 
 const removeTituloRequest = () => ({ type: 'REMOVE_TITULO_REQUEST' })

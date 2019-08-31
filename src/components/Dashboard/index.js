@@ -7,6 +7,7 @@ import * as monthsActions from '../../actions'
 import './dashboard.css'
 import Month from '../Month'
 import NewRegistry from '../NewRegistry'
+import Question from '../Question'
 
 class dashboard extends Component {
 
@@ -39,7 +40,8 @@ class dashboard extends Component {
           </button>
         </div>
         <div className='dashboard-months'>{this.renderMonths()}</div>
-        {this.props.showNewRegistry && <NewRegistry />}
+        {this.props.newRegistry && <NewRegistry />}
+        {this.props.question && <Question />}
       </div >
     )
   }
@@ -47,7 +49,8 @@ class dashboard extends Component {
 
 const mapStateToProps = state => ({
   months: state.months,
-  showNewRegistry: state.showNewRegistry
+  newRegistry: state.newRegistry,
+  question: state.question
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators(monthsActions, dispatch)

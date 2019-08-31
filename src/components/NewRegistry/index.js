@@ -131,10 +131,6 @@ class NewRegistry extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  showNewRegistry: state.showNewRegistry
-})
-
 const mapDispatchToProps = dispatch => bindActionCreators(monthsActions, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewRegistry)
+export default connect(null, mapDispatchToProps)(NewRegistry)

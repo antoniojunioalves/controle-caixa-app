@@ -13,15 +13,16 @@ class Month extends Component {
     this.handleRemoveTituloParcela = this.handleRemoveTituloParcela.bind(this)
   }
 
-  handleRemoveTituloParcela(titulo_id, parcela_id) {
-    const resposta = window.confirm('OK para excluir a PARCELA ou em CANCELAR para excluir o TÍTULO')
+  handleRemoveTituloParcela(titulo_id) {
+    // const resposta = window.confirm('OK para excluir todas as parcelas vinculadas a essa parcela.')
+    this.props.showQuestion(true)
 
-    const mesAtual = new Date().getMonth() + 1;
-    if (resposta) {
-      this.props.removeParcela(parcela_id)
-    } else {
-      this.props.removeTitulo(titulo_id, mesAtual)
-    }
+    // const mesAtual = new Date().getMonth() + 1;
+    // if (resposta) {
+    //   this.props.removeTitulo(titulo_id, mesAtual)
+    // } else {
+
+    // }
   }
 
   render() {
@@ -56,7 +57,7 @@ class Month extends Component {
                   >P</button>
                   <button
                     onClick={() => {
-                      this.handleRemoveTituloParcela(parcela.titulo_id, parcela.parcela_id)
+                      this.handleRemoveTituloParcela(parcela.titulo_id)
                     }}
                   >X</button>
                 </div>
@@ -65,23 +66,23 @@ class Month extends Component {
           })}
         </div>
 
-        <div className="month-line ultimo">
+        <div className="month-line">
           <div className='month-line-totalizer'>Totalizador</div>
           <div className='month-line-totalizer'>{formatCurrencyValue(totalDebito)}</div>
           <div className='month-line-totalizer'>{formatCurrencyValue(totalCredito)}</div>
+          <div className='month-line-totalizer'></div>
 
           <div className='month-line-totalizer'>-</div>
           <div className='month-line-totalizer'>Saldo</div>
           <div className={saldo}>{formatCurrencyValue(totalCredito - totalDebito)}</div>
+          <div className='month-line-totalizer'></div>
         </div>
       </section>
     )
   }
 }
-const mapStateToProps = state => ({
-  showNewRegistry: state.showNewRegistry
-})
+
 
 const mapDispatchToProps = dispatch => bindActionCreators(monthsActions, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Month)
+export default connect(null, mapDispatchToProps)(Month)

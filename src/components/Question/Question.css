@@ -1,0 +1,30 @@
+.question-full-screen {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.8)
+}
+
+.question-main {
+  display: grid;
+  overflow: hidden;
+  border: 5px solid #FFF;
+  border-radius: 10px;
+  gap: 5px;
+  padding: 10px;
+  height: 220px;
+  width: 440px;
+  background: #9fdf9f;
+} 
+
+.question-description {
+  display: grid;
+  grid-column: span 2;
+  overflow: hidden;
+  align-self: flex-start;
+}
