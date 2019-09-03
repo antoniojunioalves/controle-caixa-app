@@ -44,28 +44,34 @@ class Month extends Component {
 
         <div>
           {parcelas.map((parcela, index) => {
-            const credito = parcela.tipoLancamento === 'C'
-            const monthLine = credito ? 'month-line-revenue' : 'month-line-expense'
+            const { tipoLancamento, descricao, valor, titulo_id, pago } = parcela
+
+            const credito = tipoLancamento === 'C'
+            let monthLine = credito ? 'month-line-revenue' : 'month-line-expense'
+
             const monthLineButton = 'month-button ' + monthLine
+
+            monthLine += pago ? ' month-line-payed' : ''
+
             return (
               <div key={index} className="month-line">
-                <div className={monthLine}>{parcela.descricao}</div>
-                <div className={monthLine}>{formatCurrencyValue(!credito ? parcela.valor : 0)}</div>
-                <div className={monthLine}>{formatCurrencyValue(credito ? parcela.valor : 0)}</div>
+                <div className={monthLine}>{descricao}</div>
+                <div className={monthLine}>{formatCurrencyValue(!credito ? valor : 0)}</div>
+                <div className={monthLine}>{formatCurrencyValue(credito ? valor : 0)}</div>
 
                 <div className={'month-container-button'}>
                   <button
                     className={monthLineButton}
                     onClick={() => {
-                      console.log(parcela.titulo_id)
+                      console.log(titulo_id)
                     }}
                   >
-                    <img src={parcela.pago ? backPay : payIcon} alt="Like" />
+                    <img src={pago ? backPay : payIcon} alt="Like" />
                   </button>
                   <button
                     className={monthLineButton}
                     onClick={() => {
-                      this.handleRemoveTitulo(parcela.titulo_id)
+                      this.handleRemoveTitulo(titulo_id)
                     }}
                   >
                     <img src={removeIcon} alt="Like" />
