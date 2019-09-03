@@ -17,12 +17,11 @@ class Question extends Component {
     return (
       <div className='question-full-screen'>
         <div className='question-main' >
-          <div className='question-description'>
-            <label>Descrição: </label>
-
-          </div>
-          <button className='' onClick={() => { }}> Confirmar </button>
-          <button className='' onClick={() => { this.props.showQuestion(false) }}> Cancelar </button>
+          <label className='question-description'>
+            Deseja realmente excluir esse título ?
+          </label>
+          <button className='question-button2 question-button' onClick={() => { }}> Confirmar </button>
+          <button className='question-button2 question-button' onClick={() => { this.props.showQuestion(false) }}> Cancelar </button>
         </div>
       </div>
     )

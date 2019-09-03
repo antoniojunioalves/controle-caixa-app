@@ -30,6 +30,11 @@ const rootReducers = (state = initialState, action) => {
       return {
         ...state
       }
+    case 'PAYED_SUCESS':
+      return {
+        ...state,
+        pago: action.payload
+      }
     default: return state
   }
 }

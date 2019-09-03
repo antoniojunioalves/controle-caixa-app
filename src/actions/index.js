@@ -56,9 +56,27 @@ export const addRegistry = (registry) => (dispatch) => {
     .catch((error) => { dispatch(addRegistryError(error)) })
 }
 
+export const payed = (pay, currentMonth) => (dispatch) => {
+  fetch(urlAPI, {
+    headers: {
+      "Content-Type": 'application/json'
+    },
+    method: 'PUT',
+    body: JSON.stringify(pay)
+  })
+    .then(response => {
+      if (!response.ok)
+        throw new Error()
+    })
+    .then(() => {
+      dispatch(searchMonths(currentMonth))
+    })
+    .catch((error) => { dispatch(addRegistryError(error)) })
+}
+
 const removeTituloRequest = () => ({ type: 'REMOVE_TITULO_REQUEST' })
 const removeTituloError = (error) => ({ type: 'REMOVE_TITULO_ERROR', payload: error })
-export const removeTitulo = (titulo_id, mesAtual) => (dispatch) => {
+export const removeTitulo = (titulo_id, currentMonth) => (dispatch) => {
   dispatch(removeTituloRequest())
 
   fetch(urlAPI + "/" + titulo_id, {
@@ -73,7 +91,7 @@ export const removeTitulo = (titulo_id, mesAtual) => (dispatch) => {
       }
     })
     .then(() => {
-      dispatch(searchMonths(mesAtual))
+      dispatch(searchMonths(currentMonth))
     })
     .catch((error) => {
       dispatch(removeTituloError(error))
