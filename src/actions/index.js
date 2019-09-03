@@ -26,6 +26,7 @@ export const showRegistry = (show) => {
   }
 }
 
+// Modificar para receber o id ao inves de booleano
 export const showQuestion = (show) => {
   return {
     type: 'SHOW_QUESTION',

@@ -41,7 +41,17 @@ class dashboard extends Component {
         </div>
         <div className='dashboard-months'>{this.renderMonths()}</div>
         {this.props.newRegistry && <NewRegistry />}
-        {this.props.question && <Question />}
+        {this.props.question &&
+          <Question
+            descricao="Deseja realmente excluir esse título ?"
+            handleConfirmar={() => {
+              const mesAtual = new Date().getMonth() + 1;
+              this.props.removeTitulo(this.props.question, mesAtual)
+              this.props.showQuestion(null)
+            }}
+            handleCancelar={() => this.props.showQuestion(null)}
+          />
+        }
       </div >
     )
   }

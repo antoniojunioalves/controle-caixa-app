@@ -29,16 +29,23 @@
     overflow: hidden;
     align-items: start;
     grid-template-columns: 1fr repeat(2, 95px) 45px;
+    border-bottom: 0.9px groove rgb(201, 195, 195); 
+}
+
+.month-line:last-of-type {
+    background-color: aquamarine;
 }
   
 .month-line-revenue {
-    border-bottom: 0.5px groove rgb(201, 195, 195);  
-    background-color: #9fdf9f;  
+    /* border-bottom: 0.5px groove rgb(201, 195, 195);   */
+    background-color: #9fdf9f; 
+    padding: 3px 6px; 
 }
 
 .month-line-expense {
-    border-bottom: 0.5px groove rgb(201, 195, 195); 
-    background-color: #ff9999;   
+    
+    background-color: #ff9999;
+    padding: 3px 6px;   
 }
 
 .month-line-payed {
@@ -46,8 +53,8 @@
     color: gray;
 }
 
+ /* remover  */
 .month-line-totalizer{
-    background-color: aquamarine;
     height: auto;
     width: auto; 
 }
@@ -65,19 +72,21 @@
     grid-template-columns: 1fr 1fr;
     overflow: hidden;
 }
+
 .month-button {
     outline: none;
     display: flex;
     align-items: center;
     border: 0;
     padding: 2px 2px 0 2px;
-    border-bottom: 0.5px groove rgb(201, 195, 195);
+    /* border-bottom: 0.5px groove rgb(201, 195, 195); */
     cursor: pointer;
+    
 }
 
 .month-button:hover img {
     transform: translateY(-3px);
-    transition: all .2s;
+    transition: all .35s;
     box-shadow: 0 2px 2px 0 rgb(0, 0, 0, 0.6);
     border-radius: 50px;
 }

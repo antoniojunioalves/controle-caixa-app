@@ -18,10 +18,10 @@ class Question extends Component {
       <div className='question-full-screen'>
         <div className='question-main' >
           <label className='question-description'>
-            Deseja realmente excluir esse título ?
+            {this.props.descricao}
           </label>
-          <button className='question-button2 question-button' onClick={() => { }}> Confirmar </button>
-          <button className='question-button2 question-button' onClick={() => { this.props.showQuestion(false) }}> Cancelar </button>
+          <button className='question-button2 question-button' onClick={this.props.handleConfirmar}> Confirmar </button>
+          <button className='question-button2 question-button' onClick={this.props.handleCancelar}> Cancelar </button>
         </div>
       </div>
     )

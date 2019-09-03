@@ -17,7 +17,7 @@ class Month extends Component {
   }
 
   handleRemoveTitulo(titulo_id) {
-    this.props.showQuestion(true)
+    this.props.showQuestion(titulo_id)
 
     // const mesAtual = new Date().getMonth() + 1;
     // if (resposta) {
@@ -86,12 +86,12 @@ class Month extends Component {
           <div className='month-line-totalizer'>Totalizador</div>
           <div className='month-line-totalizer'>{formatCurrencyValue(totalDebito)}</div>
           <div className='month-line-totalizer'>{formatCurrencyValue(totalCredito)}</div>
-          <div className='month-line-totalizer'>_</div>
+          <div className='month-line-totalizer'></div>
 
-          <div className='month-line-totalizer'>-</div>
+          <div className='month-line-totalizer'></div>
           <div className='month-line-totalizer'>Saldo</div>
           <div className={saldo}>{formatCurrencyValue(totalCredito - totalDebito)}</div>
-          <div className='month-line-totalizer'>_</div>
+          <div className='month-line-totalizer'></div>
         </div>
       </section>
     )
