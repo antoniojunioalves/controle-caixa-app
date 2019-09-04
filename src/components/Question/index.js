@@ -5,9 +5,6 @@ import { bindActionCreators } from 'redux'
 import * as monthsActions from '../../actions'
 import './Question.css'
 
-// Tu pode passar um type nele, ou alguma prop que tu quiser..ai tipo type = info mostra só a msg 
-// e 1 botão..type = alert mostra a msg e o botão de confirmar e cancelar
-
 class Question extends Component {
   state = {
     descricao: '',

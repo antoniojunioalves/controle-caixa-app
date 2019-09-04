@@ -5,16 +5,12 @@ import { bindActionCreators } from 'redux'
 import { formatCurrencyValue } from '../../utils'
 import removeIcon from '../../imgs/removeIcon.png'
 import payIcon from '../../imgs/payIcon.png'
-import backPay from '../../imgs/backPay.png'
+import backPayIcon from '../../imgs/backPayIcon.png'
 import './month.css'
 
 import * as monthsActions from '../../actions'
 
 class Month extends Component {
-  constructor(props) {
-    super(props)
-    this.handleRemoveTitulo = this.handleRemoveTitulo.bind(this)
-  }
 
   handleRemoveTitulo(titulo_id) {
     this.props.showQuestion(titulo_id)
@@ -64,7 +60,7 @@ class Month extends Component {
                       this.handlePayed(!pago, titulo_id, parcela_id)
                     }}
                   >
-                    <img src={pago ? backPay : payIcon} alt="Like" />
+                    <img src={pago ? backPayIcon : payIcon} alt="Like" />
                   </button>
                   <button
                     className={monthLineButton}
