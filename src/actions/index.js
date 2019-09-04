@@ -46,7 +46,7 @@ const removeTituloError = (error) => ({ type: 'REMOVE_TITULO_ERROR', payload: er
 export const removeTitulo = (titulo_id, currentMonth) => (dispatch) => {
   dispatch(removeTituloRequest())
 
-  fetch(urlAPI + "/" + titulo_id, {
+  fetch(`${urlAPI}/${titulo_id}`, {
     headers: {
       "Content-Type": 'application/json'
     },
@@ -84,16 +84,5 @@ export const payed = (pay, idTitulo, idParcela, currentMonth) => (dispatch) => {
     })
 }
 
-export const showRegistry = (show) => {
-  return {
-    type: 'SHOW_NEW_REGISTRY',
-    payload: show
-  }
-}
-
-export const showQuestion = (idTitulo) => {
-  return {
-    type: 'SHOW_QUESTION',
-    payload: idTitulo
-  }
-}
+export const showRegistry = (show) => ({ type: 'SHOW_NEW_REGISTRY', payload: show })
+export const showQuestion = (idTitulo) => ({ type: 'SHOW_QUESTION', payload: idTitulo })

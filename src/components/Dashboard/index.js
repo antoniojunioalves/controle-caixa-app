@@ -8,6 +8,7 @@ import './dashboard.css'
 import Month from '../Month'
 import NewRegistry from '../NewRegistry'
 import Question from '../Question'
+import { setOverflow } from '../../utils'
 
 class dashboard extends Component {
 
@@ -48,8 +49,12 @@ class dashboard extends Component {
               const mesAtual = new Date().getMonth() + 1;
               this.props.removeTitulo(this.props.idTitulo, mesAtual)
               this.props.showQuestion(null)
+              setOverflow('visible')
             }}
-            handleCancelar={() => this.props.showQuestion(null)}
+            handleCancelar={() => {
+              this.props.showQuestion(null)
+              setOverflow('visible')
+            }}
           />
         }
       </div >

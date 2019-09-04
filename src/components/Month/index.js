@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { formatCurrencyValue } from '../../utils'
+import { formatCurrencyValue, setOverflow } from '../../utils'
 import removeIcon from '../../imgs/removeIcon.png'
 import payIcon from '../../imgs/payIcon.png'
 import backPayIcon from '../../imgs/backPayIcon.png'
@@ -14,6 +14,7 @@ class Month extends Component {
 
   handleRemoveTitulo(titulo_id) {
     this.props.showQuestion(titulo_id)
+    setOverflow('hidden')
   }
 
   handlePayed(pay, idTitulo, idParcela) {
@@ -27,7 +28,7 @@ class Month extends Component {
 
     return (
       <section className='month-main'>
-        <div className='month-title' >{mes}</div>
+        <p className='month-title' >{mes}</p>
 
         <div className="month-line">
           <div className='month-pag-rec'></div>
@@ -41,21 +42,22 @@ class Month extends Component {
             const { tipoLancamento, descricao, valor, titulo_id, parcela_id, pago } = parcela
 
             const credito = tipoLancamento === 'C'
-            let monthLine = credito ? 'month-line-revenue' : 'month-line-expense'
+            let monthLine = 'month-line'
+            monthLine += credito ? ' month-line-revenue' : ' month-line-expense'
 
-            const monthLineButton = 'month-button ' + monthLine
+            // const monthLineButton = 'month-button ' + monthLine
 
             monthLine += pago ? ' month-line-payed' : ''
 
             return (
-              <div key={index} className="month-line">
-                <div className={monthLine}>{descricao}</div>
-                <div className={monthLine}>{formatCurrencyValue(!credito ? valor : 0)}</div>
-                <div className={monthLine}>{formatCurrencyValue(credito ? valor : 0)}</div>
+              <div key={index} className={monthLine}>
+                <div>{descricao}</div>
+                <div>{formatCurrencyValue(!credito ? valor : 0)}</div>
+                <div>{formatCurrencyValue(credito ? valor : 0)}</div>
 
                 <div className={'month-container-button'}>
                   <button
-                    className={monthLineButton}
+                    className='month-button'
                     onClick={() => {
                       this.handlePayed(!pago, titulo_id, parcela_id)
                     }}
@@ -63,7 +65,7 @@ class Month extends Component {
                     <img src={pago ? backPayIcon : payIcon} alt="Like" />
                   </button>
                   <button
-                    className={monthLineButton}
+                    className='month-button'
                     onClick={() => {
                       this.handleRemoveTitulo(titulo_id)
                     }}
