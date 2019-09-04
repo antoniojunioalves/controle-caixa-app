@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { formatCurrencyValue } from '../../utils'
-import * as ActionsMonths from '../../actions'
+import * as monthsActions from '../../actions'
 import './NewRegistry.css'
 
 class NewRegistry extends Component {
@@ -99,7 +99,7 @@ class NewRegistry extends Component {
             <input
               type='checkbox'
               value={this.state.pago}
-              onChange={(e) => { this.setState({ ...this.state, pago: e.target.value }) }}
+              onChange={(e) => { this.setState({ ...this.state, pago: !this.state.pago }) }}
             />
             <label>Pago</label>
           </div>
@@ -131,10 +131,6 @@ class NewRegistry extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  showNewRegistry: state.showNewRegistry
-});
+const mapDispatchToProps = dispatch => bindActionCreators(monthsActions, dispatch)
 
-const mapDispatchToProps = dispatch => bindActionCreators(ActionsMonths, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(NewRegistry)
+export default connect(null, mapDispatchToProps)(NewRegistry)

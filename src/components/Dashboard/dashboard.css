@@ -1,11 +1,11 @@
 .dashboard-main {
   display: grid;
   grid-template-rows: auto 1fr;
-  padding: 10px 0;
+  padding: 10px;
 }
 
 .dashboard-buttons{
-  padding: 5px 10px 10px 10px;
+  padding: 0 0 10px;
   position: relative;
   display: grid;
   grid-template-columns: repeat(8, auto);
@@ -14,11 +14,13 @@
 
 .dashboard-buttons > button{
   outline: none;
+  padding: 3px 0;
+  cursor: pointer; 
   text-align: center;
   font-family: 'Trebuchet MS';
   color: black;
   overflow: hidden;
-  font-size: 10px;
+  font-size: 12px;
   border: 1px solid #009900;
   border-radius: 5px;
   background: linear-gradient(to bottom, #80ff80 -50%, #00b300 100%) repeat scroll 0% 0% transparent;  

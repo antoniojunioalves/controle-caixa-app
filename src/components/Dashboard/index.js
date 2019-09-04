@@ -7,6 +7,8 @@ import * as monthsActions from '../../actions'
 import './dashboard.css'
 import Month from '../Month'
 import NewRegistry from '../NewRegistry'
+import Question from '../Question'
+import { setOverflow } from '../../utils'
 
 class dashboard extends Component {
 
@@ -39,7 +41,22 @@ class dashboard extends Component {
           </button>
         </div>
         <div className='dashboard-months'>{this.renderMonths()}</div>
-        {this.props.showNewRegistry && <NewRegistry />}
+        {this.props.newRegistry && <NewRegistry />}
+        {this.props.idTitulo &&
+          <Question
+            descricao="Deseja realmente excluir esse título ?"
+            handleConfirmar={() => {
+              const mesAtual = new Date().getMonth() + 1;
+              this.props.removeTitulo(this.props.idTitulo, mesAtual)
+              this.props.showQuestion(null)
+              setOverflow('visible')
+            }}
+            handleCancelar={() => {
+              this.props.showQuestion(null)
+              setOverflow('visible')
+            }}
+          />
+        }
       </div >
     )
   }
@@ -47,7 +64,8 @@ class dashboard extends Component {
 
 const mapStateToProps = state => ({
   months: state.months,
-  showNewRegistry: state.showNewRegistry
+  newRegistry: state.newRegistry,
+  idTitulo: state.idTitulo
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators(monthsActions, dispatch)

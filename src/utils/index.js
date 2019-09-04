@@ -9,3 +9,8 @@ export const formatCurrencyValue = (value) => {
       currency: 'BRL'
     })
 }
+
+export const setOverflow = (overflow) => {
+  document.querySelector('html').style.overflow = overflow
+  document.querySelector('body').style.overflow = overflow
+}
