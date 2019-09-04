@@ -26,9 +26,7 @@
 .question-description {
   display: flex;
   grid-column: span 2;
-  
   overflow: hidden;
-  align-self: flex-start;
 }
 
 .question-button {

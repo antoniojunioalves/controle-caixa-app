@@ -18,19 +18,17 @@ class Month extends Component {
 
   handleRemoveTitulo(titulo_id) {
     this.props.showQuestion(titulo_id)
+  }
 
-    // const mesAtual = new Date().getMonth() + 1;
-    // if (resposta) {
-    //   this.props.removeTitulo(titulo_id, mesAtual)
-    // } else {
-
-    // }
+  handlePayed(pay, idTitulo, idParcela) {
+    const currentMonth = new Date().getMonth() + 1;
+    this.props.payed(pay, idTitulo, idParcela, currentMonth)
   }
 
   render() {
     const { totalCredito, totalDebito, mes, parcelas } = this.props.month
-    const saldo = (totalCredito - totalDebito) < 0 ? 'month-line-totalizer negativo' : 'month-line-totalizer'
-    console.log(parcelas)
+    const saldo = (totalCredito - totalDebito) < 0 ? 'negativo' : ''
+
     return (
       <section className='month-main'>
         <div className='month-title' >{mes}</div>
@@ -44,7 +42,7 @@ class Month extends Component {
 
         <div>
           {parcelas.map((parcela, index) => {
-            const { tipoLancamento, descricao, valor, titulo_id, pago } = parcela
+            const { tipoLancamento, descricao, valor, titulo_id, parcela_id, pago } = parcela
 
             const credito = tipoLancamento === 'C'
             let monthLine = credito ? 'month-line-revenue' : 'month-line-expense'
@@ -63,7 +61,7 @@ class Month extends Component {
                   <button
                     className={monthLineButton}
                     onClick={() => {
-                      console.log(titulo_id)
+                      this.handlePayed(!pago, titulo_id, parcela_id)
                     }}
                   >
                     <img src={pago ? backPay : payIcon} alt="Like" />
@@ -82,18 +80,18 @@ class Month extends Component {
           })}
         </div>
 
-        <div className="month-line">
-          <div className='month-line-totalizer'>Totalizador</div>
-          <div className='month-line-totalizer'>{formatCurrencyValue(totalDebito)}</div>
-          <div className='month-line-totalizer'>{formatCurrencyValue(totalCredito)}</div>
-          <div className='month-line-totalizer'></div>
+        <div className="month-line month-line-totalizer">
+          <div>Totalizador</div>
+          <div>{formatCurrencyValue(totalDebito)}</div>
+          <div>{formatCurrencyValue(totalCredito)}</div>
+          <div></div>
 
-          <div className='month-line-totalizer'></div>
-          <div className='month-line-totalizer'>Saldo</div>
+          <div></div>
+          <div className={saldo}>Saldo</div>
           <div className={saldo}>{formatCurrencyValue(totalCredito - totalDebito)}</div>
-          <div className='month-line-totalizer'></div>
+          <div></div>
         </div>
-      </section>
+      </section >
     )
   }
 }

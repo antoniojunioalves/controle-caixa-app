@@ -1,9 +1,9 @@
 .month-main {
-    display: grid;
-    overflow: hidden;
-    grid-template-rows: auto auto 1fr auto;
-    box-shadow: 0 2px 2px 0 rgb(0, 0, 0, 0.1);
-    border-radius: 4px;
+  display: grid;
+  overflow: hidden;
+  grid-template-rows: auto auto 1fr auto;
+  box-shadow: 0 2px 2px 0 rgb(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
 
 .month-main:hover .month-title {
@@ -11,89 +11,88 @@
 }
 
 .month-title {
-    display: flex; 
-    overflow: hidden;
-    background-color: #3333ff;
-    justify-content: center;
+  display: flex; 
+  overflow: hidden;
+  background-color: #3333ff;
+  justify-content: center;
 }
 
 .month-pag-rec{
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    background-color: white;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background-color: white;
+  padding: 3px 6px; 
 }
 
 .month-line {
-    display: grid;
-    overflow: hidden;
-    align-items: start;
-    grid-template-columns: 1fr repeat(2, 95px) 45px;
-    border-bottom: 0.9px groove rgb(201, 195, 195); 
-}
-
-.month-line:last-of-type {
-    background-color: aquamarine;
+  display: grid;
+  overflow: hidden;
+  align-items: start;
+  grid-template-columns: 1fr repeat(2, 95px) 50px;
+  border-bottom: 0.9px groove rgb(201, 195, 195); 
 }
   
 .month-line-revenue {
-    /* border-bottom: 0.5px groove rgb(201, 195, 195);   */
-    background-color: #9fdf9f; 
-    padding: 3px 6px; 
+  background-color: #9fdf9f; 
+  padding: 3px 6px; 
 }
 
-.month-line-expense {
-    
-    background-color: #ff9999;
-    padding: 3px 6px;   
+.month-line-expense {    
+  background-color: #ff9999;
+  padding: 3px 6px;   
 }
 
 .month-line-payed {
-    text-decoration: line-through;
-    color: gray;
+  text-decoration: line-through;
+  color: rgb(85, 85, 85);
 }
 
- /* remover  */
-.month-line-totalizer{
-    height: auto;
-    width: auto; 
+.month-line-totalizer {
+  background-color: aquamarine;
+  padding: 3px 6px; 
 }
 
 .negativo {
-    color: red;
-    font-style: italic;
-    font-weight: bold;
+  color: red;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .month-container-button {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
 }
 
 .month-button {
-    outline: none;
-    display: flex;
-    align-items: center;
-    border: 0;
-    padding: 2px 2px 0 2px;
-    /* border-bottom: 0.5px groove rgb(201, 195, 195); */
-    cursor: pointer;
-    
+  outline: none;
+  display: flex;
+  align-items: center;
+  border: 0;
+  padding: 2px 2px 0 2px;
+  cursor: pointer; 
 }
 
 .month-button:hover img {
-    transform: translateY(-3px);
-    transition: all .35s;
-    box-shadow: 0 2px 2px 0 rgb(0, 0, 0, 0.6);
-    border-radius: 50px;
+  transform: translateY(-3px);
+  transition: all .35s;
+  box-shadow: 0 2px 2px 0.5px rgb(0, 0, 0, 0.6);
+  border-radius: 50px;
+}
+
+.month-button:active img {
+  transform: none;
+  transition: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .month-button > img {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  left: 0;
 }

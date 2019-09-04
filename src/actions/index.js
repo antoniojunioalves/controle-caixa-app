@@ -1,6 +1,5 @@
-export const urlAPI = 'https://financeiro-bao.herokuapp.com/api/titulos'
-// export const urlAPI = 'http://localhost:3003/api/titulos'
-
+// export const urlAPI = 'https://financeiro-bao.herokuapp.com/api/titulos'
+export const urlAPI = 'http://localhost:3003/api/titulos'
 
 const searchMonthsRequest = () => ({ type: 'SEARCH_MONTH_REQUEST' })
 const searchMonthsSucess = (months) => ({ type: 'SEARCH_MONTH_SUCESS', payload: months })
@@ -17,21 +16,6 @@ export const searchMonths = (currentMonth) => (dispatch) => {
     })
     .then(response => dispatch(searchMonthsSucess(response)))
     .catch((error) => dispatch(searchMonthsError(error)))
-}
-
-export const showRegistry = (show) => {
-  return {
-    type: 'SHOW_NEW_REGISTRY',
-    payload: show
-  }
-}
-
-// Modificar para receber o id ao inves de booleano
-export const showQuestion = (show) => {
-  return {
-    type: 'SHOW_QUESTION',
-    payload: show
-  }
 }
 
 const addRegistryRequest = () => ({ type: 'ADD_REGISTRY_REQUEST' })
@@ -53,24 +37,6 @@ export const addRegistry = (registry) => (dispatch) => {
     .then(() => {
       dispatch(showRegistry(false))
       dispatch(searchMonths(registry.dataInsercao.getMonth() + 1))
-    })
-    .catch((error) => { dispatch(addRegistryError(error)) })
-}
-
-export const payed = (pay, currentMonth) => (dispatch) => {
-  fetch(urlAPI, {
-    headers: {
-      "Content-Type": 'application/json'
-    },
-    method: 'PUT',
-    body: JSON.stringify(pay)
-  })
-    .then(response => {
-      if (!response.ok)
-        throw new Error()
-    })
-    .then(() => {
-      dispatch(searchMonths(currentMonth))
     })
     .catch((error) => { dispatch(addRegistryError(error)) })
 }
@@ -97,4 +63,38 @@ export const removeTitulo = (titulo_id, currentMonth) => (dispatch) => {
     .catch((error) => {
       dispatch(removeTituloError(error))
     })
+}
+
+const payedRequest = () => ({ type: 'PAYED_REQUEST' })
+const payedError = (error) => ({ type: 'PAYED_ERROR', payload: error })
+export const payed = (pay, idTitulo, idParcela, currentMonth) => (dispatch) => {
+  dispatch(payedRequest())
+
+  fetch(`${urlAPI}/payed?pay=${pay}&idTitulo=${idTitulo}&idParcela=${idParcela}`)
+    .then((response) => {
+      if (!response) {
+        throw new Error();
+      }
+    })
+    .then(() => {
+      dispatch(searchMonths(currentMonth))
+    })
+    .catch((error) => {
+      dispatch(payedError(error))
+    })
+}
+
+export const showRegistry = (show) => {
+  return {
+    type: 'SHOW_NEW_REGISTRY',
+    payload: show
+  }
+}
+
+// Modificar para receber o id ao inves de booleano
+export const showQuestion = (idTitulo) => {
+  return {
+    type: 'SHOW_QUESTION',
+    payload: idTitulo
+  }
 }

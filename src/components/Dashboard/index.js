@@ -41,12 +41,12 @@ class dashboard extends Component {
         </div>
         <div className='dashboard-months'>{this.renderMonths()}</div>
         {this.props.newRegistry && <NewRegistry />}
-        {this.props.question &&
+        {this.props.idTitulo &&
           <Question
             descricao="Deseja realmente excluir esse título ?"
             handleConfirmar={() => {
               const mesAtual = new Date().getMonth() + 1;
-              this.props.removeTitulo(this.props.question, mesAtual)
+              this.props.removeTitulo(this.props.idTitulo, mesAtual)
               this.props.showQuestion(null)
             }}
             handleCancelar={() => this.props.showQuestion(null)}
@@ -60,7 +60,7 @@ class dashboard extends Component {
 const mapStateToProps = state => ({
   months: state.months,
   newRegistry: state.newRegistry,
-  question: state.question
+  idTitulo: state.idTitulo
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators(monthsActions, dispatch)

@@ -99,7 +99,7 @@ class NewRegistry extends Component {
             <input
               type='checkbox'
               value={this.state.pago}
-              onChange={(e) => { this.setState({ ...this.state, pago: e.target.value }) }}
+              onChange={(e) => { this.setState({ ...this.state, pago: !this.state.pago }) }}
             />
             <label>Pago</label>
           </div>
