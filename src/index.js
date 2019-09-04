@@ -9,7 +9,7 @@ import reducers from './reducers'
 import './index.css';
 import App from '../src/components/App';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
 
 ReactDOM.render(
