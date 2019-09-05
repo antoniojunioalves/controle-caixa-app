@@ -45,8 +45,6 @@ class Month extends Component {
             let monthLine = 'month-line'
             monthLine += credito ? ' month-line-revenue' : ' month-line-expense'
 
-            // const monthLineButton = 'month-button ' + monthLine
-
             monthLine += pago ? ' month-line-payed' : ''
 
             return (
