@@ -52,6 +52,13 @@
   color: rgb(85, 85, 85);
 }
 
+.month-last {
+  transform: translateY(-3px);
+  transition: all .35s;
+  box-shadow: 0 2px 2px 0.5px rgb(0, 0, 0, 0.6);
+  border-radius: 50px;
+}
+
 .month-line-totalizer {
   background-color: aquamarine;
   padding: 6px;
