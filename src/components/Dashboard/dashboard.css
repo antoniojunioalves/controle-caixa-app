@@ -49,3 +49,27 @@
   gap: 15px;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
+
+@media (max-width:1599px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (max-width:991px) {
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (max-width:479px) {
+
+}
+
+@media (max-width:399px) {
+
+}
