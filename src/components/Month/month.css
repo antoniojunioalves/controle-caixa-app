@@ -2,8 +2,9 @@
   display: grid;
   overflow: hidden;
   grid-template-rows: auto auto 1fr auto;
-  box-shadow: 0 2px 2px 0 rgb(0, 0, 0, 0.1);
+  box-shadow: 0 2px 2px 0 rgb(0, 0, 0, 0.3);
   border-radius: 4px;
+  background-color: rgb(242, 242, 242);
 }
 
 .month-main:hover .month-title {
@@ -20,7 +21,6 @@
 
 .month-pag-rec{
   display: flex;
-  background-color: white;
   padding: 2px 0; 
   color: rgb(112, 111, 111);
 }
@@ -51,7 +51,7 @@
 }
 
 .parcel-last {
-  font-weight: bold;
+  /* font-weight: bold; */
   color: blue;
 }
 
