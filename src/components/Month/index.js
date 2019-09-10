@@ -24,7 +24,7 @@ class Month extends Component {
 
   render() {
     const { totalCredito, totalDebito, mes, parcelas } = this.props.month
-    const saldo = (totalCredito - totalDebito) < 0 ? 'negativo' : ''
+    const saldo = (totalCredito - totalDebito) < 0 ? 'negativo' : 'positivo'
 
     return (
       <section className='month-main'>
@@ -40,15 +40,16 @@ class Month extends Component {
         <div>
           {parcelas.map((parcela, index) => {
             const { tipoLancamento, descricao, valor, titulo_id, parcela_id, pago, qtdTotalParcelas, nroParcela } = parcela
-            const ultimaParcela = qtdTotalParcelas == nroParcela
+            const ultimaParcela = qtdTotalParcelas === nroParcela
+            const parcelaUnica = qtdTotalParcelas === 1
 
             const credito = tipoLancamento === 'C'
             let monthLine = 'month-line'
             monthLine += credito ? ' month-line-revenue' : ' month-line-expense'
             monthLine += pago ? ' month-line-payed' : ''
-            // monthLine += ultimaParcela ? 'month-last' : ''
-            console.log(monthLine)
-            const descricaoCompleta = `${descricao} ${nroParcela}/${qtdTotalParcelas}`
+            monthLine += ultimaParcela && (!parcelaUnica) && (!pago) ? ' parcel-last' : ''
+
+            const descricaoCompleta = parcelaUnica ? descricao : `${descricao} ${nroParcela}/${qtdTotalParcelas}`
             return (
               <div key={index} className={monthLine}>
                 <div>{descricaoCompleta}</div>

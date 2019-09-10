@@ -7,22 +7,22 @@
 }
 
 .month-main:hover .month-title {
-  color: #FFF;
+  font-weight: bold;
 }
 
 .month-title {
   padding: 6px 0;
   display: flex; 
-  overflow: hidden;
-  background-color: #3333ff;
+  color: #3333ff;
   justify-content: center;
+  border-bottom: 1px groove rgb(201, 195, 195);
 }
 
 .month-pag-rec{
   display: flex;
-  overflow: hidden;
   background-color: white;
   padding: 2px 0; 
+  color: rgb(112, 111, 111);
 }
 
 .month-pag-rec:last-of-type {
@@ -31,20 +31,18 @@
 
 .month-line {
   display: grid;
-  overflow: hidden;
   align-items: center;
   grid-template-columns: 1fr repeat(2, 95px) 50px;
-  border-bottom: 1px groove rgb(201, 195, 195); 
   padding: 0 6px; 
   column-gap: 6px;
 }
   
 .month-line-revenue {
-  background-color: #9fdf9f; 
+  color: #4fc44f; 
 }
 
 .month-line-expense {    
-  background-color: #ff9999; 
+  color: #fd5050; 
 }
 
 .month-line-payed {
@@ -52,15 +50,13 @@
   color: rgb(85, 85, 85);
 }
 
-.month-last {
-  transform: translateY(-3px);
-  transition: all .35s;
-  box-shadow: 0 2px 2px 0.5px rgb(0, 0, 0, 0.6);
-  border-radius: 50px;
+.parcel-last {
+  font-weight: bold;
+  color: blue;
 }
 
 .month-line-totalizer {
-  background-color: aquamarine;
+  color: rgb(0, 107, 71);
   padding: 6px;
   row-gap: 3px;
 }
@@ -75,12 +71,17 @@
   font-weight: bold;
 }
 
+.positivo {
+  color: green;
+  font-style: italic;
+  font-weight: bold;
+}
+
 .month-container-button {
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  overflow: hidden;
 }
 
 .month-button {
