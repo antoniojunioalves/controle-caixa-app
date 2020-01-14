@@ -4,7 +4,7 @@ import imgLogo from '../../imgs/imgLogo.png'
 import './menu.css'
 
 export default () => (
-  <nav>
+  <nav data-testid='menu-component'>
     <div className='menu-main'>
       <img className='img-logo' src={imgLogo} alt='Imagem da Logo' />
       <ul className='menu'>
