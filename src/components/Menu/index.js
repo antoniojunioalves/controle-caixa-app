@@ -1,17 +1,24 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import imgLogo from '../../imgs/imgLogo.png'
-import './menu.css'
+import imgLogo from '../../imgs/imgLogo.png';
+import './menu.css';
 
 export default () => (
   <nav data-testid='menu-component'>
     <div className='menu-main'>
       <img className='img-logo' src={imgLogo} alt='Imagem da Logo' />
       <ul className='menu'>
-        <li className='menu-button'><a className='menu-text-button' href='#/'>Financeiro Bão</a></li>
-        <li className='menu-button'><a className='menu-text-button' href='#/dashboard'>Dashboard</a></li>
-        <li className='menu-button'><a className='menu-text-button' href='#/relatorios'>Relatórios</a></li>
+        <li className='menu-button'>
+          <Link className='menu-text-button' to='/wait'>Financeiro Bão</Link>
+        </li>
+        <li className='menu-button'>
+          <Link className='menu-text-button' to='/dashboard'>Dashboard</Link>
+        </li>
+        <li className='menu-button'>
+          <Link className='menu-text-button' to='/relatorios'>Relatórios</Link>
+        </li>
       </ul>
     </div>
   </nav>
-)
+);
