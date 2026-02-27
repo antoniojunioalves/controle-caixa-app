@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
-import Menu from '../Menu';
+import Menu from './index';
 
 test('Render component Menu', () => {
   const { getByTestId } = render(

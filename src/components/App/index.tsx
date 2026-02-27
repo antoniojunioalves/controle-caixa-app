@@ -4,9 +4,11 @@ import { HashRouter } from 'react-router-dom';
 import Menu from '../Menu';
 import Routes from '../../routes';
 
-export default () => (
+const App: React.FC = () => (
   <HashRouter>
     <Menu />
     <Routes />
   </HashRouter>
 );
+
+export default App;
