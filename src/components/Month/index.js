@@ -25,12 +25,19 @@ class Month extends Component {
   render() {
     const { totalCredito, totalDebito, mes, parcelas } = this.props.month
     const saldo = (totalCredito - totalDebito) < 0 ? 'negativo' : 'positivo'
+    const saldoMes = totalCredito - totalDebito
 
     return (
       <section className='month-main'>
-        <p className='month-title' >{mes}</p>
+        <div className='month-header'>
+          <p className='month-title'>{mes}</p>
+          <div className='month-balance-resume'>
+            <span>Saldo do mês</span>
+            <strong className={saldo}>{formatCurrencyValue(saldoMes)}</strong>
+          </div>
+        </div>
 
-        <div className="month-line">
+        <div className="month-line month-line-head">
           <div className='month-pag-rec'></div>
           <div className='month-pag-rec'>Pagar</div>
           <div className='month-pag-rec'>Receber</div>
@@ -50,28 +57,34 @@ class Month extends Component {
             monthLine += ultimaParcela && (!parcelaUnica) && (!pago) ? ' parcel-last' : ''
 
             const descricaoCompleta = parcelaUnica ? descricao : `${descricao} ${nroParcela}/${qtdTotalParcelas}`
+            const situacao = pago ? 'Pago' : 'Pendente'
             return (
-              <div key={index} className={monthLine}>
-                <div>{descricaoCompleta}</div>
+              <div key={parcela_id || index} className={monthLine}>
+                <div className='month-description'>
+                  <span>{descricaoCompleta}</span>
+                  <small>{situacao}</small>
+                </div>
                 <div>{formatCurrencyValue(!credito ? valor : 0)}</div>
                 <div>{formatCurrencyValue(credito ? valor : 0)}</div>
 
                 <div className={'month-container-button'}>
                   <button
-                    className='month-button'
+                    className='month-button month-button-pay'
+                    title={pago ? 'Desfazer pagamento' : 'Marcar como pago'}
                     onClick={() => {
                       this.handlePayed(!pago, titulo_id, parcela_id)
                     }}
                   >
-                    <img src={pago ? backPayIcon : payIcon} alt="Like" />
+                    <img src={pago ? backPayIcon : payIcon} alt="Mudar status do pagamento" />
                   </button>
                   <button
-                    className='month-button'
+                    className='month-button month-button-remove'
+                    title='Excluir lançamento'
                     onClick={() => {
                       this.handleRemoveTitulo(titulo_id)
                     }}
                   >
-                    <img src={removeIcon} alt="Like" />
+                    <img src={removeIcon} alt="Excluir lançamento" />
                   </button>
                 </div>
               </div>
@@ -80,14 +93,14 @@ class Month extends Component {
         </div>
 
         <div className="month-line month-line-totalizer">
-          <div>Totalizador</div>
+          <div>Total do mês</div>
           <div>{formatCurrencyValue(totalDebito)}</div>
           <div>{formatCurrencyValue(totalCredito)}</div>
           <div></div>
 
           <div></div>
           <div className={saldo}>Saldo</div>
-          <div className={saldo}>{formatCurrencyValue(totalCredito - totalDebito)}</div>
+          <div className={saldo}>{formatCurrencyValue(saldoMes)}</div>
           <div></div>
         </div>
       </section >

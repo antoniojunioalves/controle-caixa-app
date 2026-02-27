@@ -1,43 +1,93 @@
+.menu-nav {
+  position: sticky;
+  top: 0;
+  z-index: 15;
+  padding: 14px 20px;
+  border-bottom: 1px solid #d9dee9;
+  background: linear-gradient(125deg, #f8faf7 0%, #eef3ff 100%);
+  backdrop-filter: blur(6px);
+}
+
 .menu-main {
+  max-width: 1400px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.menu-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-brand-text {
+  display: grid;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+.menu-brand-text > strong {
+  color: #12352c;
+  font-size: 22px;
+}
+
+.menu-brand-text > span {
+  color: #50626f;
+  font-size: 13px;
 }
 
 .menu {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
   align-items: center;
-  list-style-type: none;
+  list-style: none;
+  gap: 10px;
 }
 
-.menu-text-button {
+.menu-link {
+  display: block;
   text-decoration: none;
+  padding: 10px 18px;
+  border: 1px solid #c4d0de;
+  border-radius: 999px;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: 17px;
+  color: #1d364a;
+  background: #ffffff;
+  transition: all 0.2s ease;
 }
 
-.menu-button{
-  text-align: center;
-  margin: 0px 5px 0px 5px;
-  font-family: 'Trebuchet MS';
-  overflow: hidden;
-  padding: 5px 30px 5px 30px;
-  font-size: 20px;
-  color: #006600;
-  border: 1px solid #009900;
-  border-radius: 5px;
-  text-decoration:none;
-  background: linear-gradient(to bottom, #80ff80 -50%, #00b300 100%) repeat scroll 0% 0% transparent;
-}
-
-.menu-button:hover{
-  color: #00cc00;
-  border: 1px solid #80ff80;
-  background: linear-gradient(to bottom, #00b300 -50%, #80ff80 100%) repeat scroll 0% 0% transparent;
+.menu-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(31, 61, 89, 0.14);
+  border-color: #8fb3d0;
 }
 
 .img-logo {
-  width: 70px;
-  height: 70px;
-  padding: 8px;
+  width: 62px;
+  height: 62px;
+}
+
+@media (max-width: 900px) {
+  .menu-nav {
+    padding: 12px;
+  }
+
+  .menu-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .menu-link {
+    font-size: 15px;
+    padding: 8px 14px;
+    white-space: nowrap;
+  }
 }
