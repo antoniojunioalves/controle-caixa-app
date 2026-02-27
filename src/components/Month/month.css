@@ -2,27 +2,52 @@
   display: grid;
   overflow: hidden;
   grid-template-rows: auto auto 1fr auto;
-  box-shadow: 0 2px 2px 0 rgb(0, 0, 0, 0.3);
-  border-radius: 4px;
-  background-color: rgb(242, 242, 242);
+  border: 1px solid #d7e1ec;
+  box-shadow: 0 10px 24px rgba(25, 41, 59, 0.08);
+  border-radius: 14px;
+  background-color: #ffffff;
 }
 
-.month-main:hover .month-title {
-  font-weight: bold;
+.month-main:hover {
+  border-color: #bfd0e4;
+}
+
+.month-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #ebf0f5;
+  background: linear-gradient(150deg, #f9fbfd 0%, #eff5fb 100%);
 }
 
 .month-title {
-  padding: 6px 0;
-  display: flex; 
-  color: #3333ff;
-  justify-content: center;
-  border-bottom: 1px groove rgb(201, 195, 195);
+  margin: 0;
+  color: #1f4060;
+  font-size: 22px;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+.month-balance-resume {
+  display: grid;
+  justify-items: end;
+}
+
+.month-balance-resume > span {
+  color: #557187;
+  font-size: 12px;
+}
+
+.month-balance-resume > strong {
+  font-size: 18px;
 }
 
 .month-pag-rec{
   display: flex;
-  padding: 2px 0; 
-  color: rgb(112, 111, 111);
+  padding: 4px 0;
+  color: #61768a;
+  font-weight: 700;
 }
 
 .month-pag-rec:last-of-type {
@@ -32,48 +57,65 @@
 .month-line {
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr repeat(2, 95px) 50px;
-  padding: 0 6px; 
+  grid-template-columns: minmax(160px, 1fr) repeat(2, minmax(85px, 110px)) 70px;
+  padding: 6px 10px;
   column-gap: 6px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.month-line-head {
+  border-bottom: 1px solid #dce4ed;
+  background: #f8fbff;
 }
   
 .month-line-revenue {
-  color: #4fc44f; 
+  color: #1e8d5b;
 }
 
 .month-line-expense {    
-  color: #fd5050; 
+  color: #d64a57;
 }
 
 .month-line-payed {
   text-decoration: line-through;
-  color: rgb(85, 85, 85);
+  color: #7d8996;
 }
 
 .parcel-last {
-  /* font-weight: bold; */
-  color: blue;
+  color: #1f57ad;
 }
 
 .month-line-totalizer {
-  color: rgb(0, 107, 71);
-  padding: 6px;
+  color: #116042;
+  padding: 10px;
   row-gap: 3px;
+  border-top: 1px solid #dfe7ee;
+  border-bottom: 0;
+  background: #f8fcfb;
 }
 
 .month-line-totalizer > div:nth-of-type(6) {
   text-align: right;
 }
 
+.month-description {
+  display: grid;
+  gap: 2px;
+}
+
+.month-description > small {
+  color: #6f8496;
+  font-size: 12px;
+  font-weight: 700;
+}
+
 .negativo {
-  color: red;
-  font-style: italic;
+  color: #d31a33;
   font-weight: bold;
 }
 
 .positivo {
-  color: green;
-  font-style: italic;
+  color: #127c48;
   font-weight: bold;
 }
 
@@ -82,35 +124,58 @@
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 4px;
 }
 
 .month-button {
-  outline: none;
   display: flex;
   align-items: center;
-  border: 0;
-  padding: 2px 2px 0 2px;
-  cursor: pointer; 
-  background: none;
+  justify-content: center;
+  border: 1px solid #d8e0ea;
+  border-radius: 8px;
+  padding: 4px;
+  cursor: pointer;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.month-button-pay {
+  border-color: #bbdecf;
+  background: #f2fbf7;
+}
+
+.month-button-remove {
+  border-color: #f0c6cc;
+  background: #fff4f6;
 }
 
 .month-button:hover img {
-  transform: translateY(-3px);
-  transition: all .35s;
-  box-shadow: 0 2px 2px 0.5px rgb(0, 0, 0, 0.6);
-  border-radius: 50px;
+  transform: translateY(-1px);
 }
 
-.month-button:active img {
-  transform: none;
-  transition: none;
-  border-radius: 0;
-  box-shadow: none;
+.month-button:hover {
+  box-shadow: 0 6px 12px rgba(22, 43, 62, 0.14);
 }
 
 .month-button > img {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  left: 0;
+  display: block;
+  width: 17px;
+  height: 17px;
+}
+
+@media (max-width: 480px) {
+  .month-line {
+    grid-template-columns: 1fr 80px 80px 64px;
+    padding: 6px;
+    column-gap: 4px;
+    font-size: 14px;
+  }
+
+  .month-title {
+    font-size: 20px;
+  }
+
+  .month-balance-resume > strong {
+    font-size: 16px;
+  }
 }

@@ -1,5 +1,5 @@
-export const urlAPI = 'https://financeiro-bao.herokuapp.com/api/titulos'
-// export const urlAPI = 'http://localhost:3003/api/titulos'
+// export const urlAPI = 'https://financeiro-bao.herokuapp.com/api/titulos'
+export const urlAPI = 'http://localhost:3003/api/titulos'
 
 const searchMonthsRequest = () => ({ type: 'SEARCH_MONTH_REQUEST' })
 const searchMonthsSucess = (months) => ({ type: 'SEARCH_MONTH_SUCESS', payload: months })
