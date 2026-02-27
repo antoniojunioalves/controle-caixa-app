@@ -1,31 +1,28 @@
 import React from 'react';
 
-import { render, fireEvent } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react';
 
-import Question from '../Question'
+import Question from '../Question';
 
-describe('Agrupador ',() => {
-  var props
+describe('Question', () => {
+  const props = {
+    descricao: 'Descrição teste',
+    handleConfirmar: jest.fn(),
+  };
 
-  beforeEach(() =>{
-    props = {
-      descricao: 'Descrição teste',
-      handleConfirmar: jest.fn()
-    }
-    console.log('BeforeEach')
-  })
+  beforeEach(() => {
+    props.handleConfirmar.mockClear();
+  });
 
   test('Render component Question', () => {
-    const { getByTestId } = render(<Question />)
-    expect(getByTestId('question-component')).toBeInTheDocument()
-  })
+    const { getByTestId } = render(<Question />);
+    expect(getByTestId('question-component')).toBeTruthy();
+  });
 
   test('Render component Question click confirmar', () => {
-    const { getByTestId, debug } = render(<Question {...props} />)
-    const button = getByTestId('btn-confirmar')
-    debug(button)
-    fireEvent.click(button)
-    expect(props.handleConfirmar).toBeCalled()
-  })
-
-})
+    const { getByTestId } = render(<Question {...props} />);
+    const button = getByTestId('btn-confirmar');
+    fireEvent.click(button);
+    expect(props.handleConfirmar).toHaveBeenCalled();
+  });
+});
