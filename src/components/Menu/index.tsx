@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import imgLogo from '../../imgs/imgLogo.png';
 import './menu.css';
 
-export default () => (
+const Menu: React.FC = () => (
   <nav className='menu-nav' data-testid='menu-component'>
     <div className='menu-main'>
       <div className='menu-brand'>
@@ -28,3 +28,5 @@ export default () => (
     </div>
   </nav>
 );
+
+export default Menu;

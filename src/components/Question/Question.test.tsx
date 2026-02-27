@@ -1,17 +1,18 @@
 import React from 'react';
-
 import { fireEvent, render } from '@testing-library/react';
 
-import Question from '../Question';
+import Question from './index';
 
 describe('Question', () => {
   const props = {
     descricao: 'Descrição teste',
     handleConfirmar: jest.fn(),
+    handleCancelar: jest.fn(),
   };
 
   beforeEach(() => {
     props.handleConfirmar.mockClear();
+    props.handleCancelar.mockClear();
   });
 
   test('Render component Question', () => {

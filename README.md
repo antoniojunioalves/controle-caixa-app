@@ -1,29 +1,86 @@
-# Controle de caixa APP
+# Controle de Caixa App
 
-### `Descrição`
-Projeto para controlar despesas e receitas
+Aplicação web para acompanhar despesas e receitas por mês, com visão anual, saldo consolidado e controle de status de pagamento.
 
-### `Como executar`
-É necessário ter a API na máquina local
+## Funcionalidades
 
-Para instalar:
+- Dashboard anual com cards de resumo:
+  - total a receber
+  - total a pagar
+  - saldo consolidado
+  - quantidade de lançamentos pendentes
+- Detalhamento mensal com:
+  - listagem de parcelas de débito e crédito
+  - indicação visual de itens pagos e pendentes
+  - totalizador mensal (pagar, receber e saldo)
+- Cadastro de novo lançamento com:
+  - descrição
+  - valor total
+  - quantidade de parcelas
+  - primeiro vencimento
+  - tipo (débito/crédito)
+  - opção de criar como pago
+- Ações por lançamento:
+  - marcar/desmarcar pagamento
+  - excluir lançamento com confirmação
+
+## Stack técnica
+
+- React 18
+- Redux + Redux Thunk
+- React Router DOM 6
+- TypeScript
+- React Scripts (Create React App)
+
+## Pré-requisitos
+
+- Node.js 18+
+- npm
+- API backend disponível localmente em `http://localhost:3003`
+
+A URL da API está definida em `src/actions/index.ts`.
+
+## Como executar
+
+1. Instalar dependências:
 
 ```bash
-cd controle-caixa-app
 npm install
 ```
-Para executar na produção:
-```bash
-npm build
-```
-Para executar no desenvolvimento:
+
+2. Rodar em desenvolvimento:
+
 ```bash
 npm start
 ```
-Local o APP ficará disponível na Url [http://localhost:3000](http://localhost:3000) 
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e5b6a3a5-d097-4936-b257-343e3d25edcd/deploy-status)](https://app.netlify.com/sites/financeiro-bao/deploys)
+A aplicação ficará disponível em `http://localhost:3000`.
 
+3. Gerar build de produção:
 
-### License
-![License](https://camo.githubusercontent.com/743d6ca437fec2ad80985c1208501b7c7b4b97ae/68747470733a2f2f696d672e736869656c64732e696f2f7061636b61676973742f6c2f646f637472696e652f6f726d2e737667)
+```bash
+npm run build
+```
+
+4. Executar testes:
+
+```bash
+npm test
+```
+
+5. Gerar cobertura:
+
+```bash
+npm run coverage
+```
+
+## Estrutura principal
+
+- `src/components` componentes da interface
+- `src/actions` ações assíncronas e integração com API
+- `src/reducers` estado global Redux
+- `src/types.ts` tipos de domínio da aplicação
+
+## Licença
+
+Projeto licenciado sob os termos definidos em `LICENSE.md`.
